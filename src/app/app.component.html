@@ -1,4 +1,4 @@
-<!--
+
 <span *ngIf="isAuthenticated()">Bonjour {{ login }}</span>
 <a
   *ngIf="!isAuthenticated()"
@@ -10,8 +10,8 @@
 <button *ngIf="isAuthenticated()" (click)="logout()" class="btn btn-link">
   logout
 </button>
-<app-menu></app-menu>
-<router-outlet></router-outlet> -->
-
 <app-menu-admin></app-menu-admin>
+<router-outlet></router-outlet>
+
+<!-- <app-menu-admin></app-menu-admin> -->
 
