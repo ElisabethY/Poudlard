@@ -46,5 +46,6 @@ export class Produit {
   public set boutique(value: Boutique| undefined) {
     this._boutique = value ;
   }
+
 }
 
