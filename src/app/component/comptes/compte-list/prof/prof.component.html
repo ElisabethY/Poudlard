@@ -7,14 +7,22 @@
   </div>
 
 <table class="table">
+  <tr>
+    <td>ID</td>
+    <td>Login</td>
+    <td>Nom Prenom</td>
+    <td>Date de naissance</td>
+    <td>Maison</td>
+  </tr>
   <tr *ngFor="let e of profs">
     <td>{{ e.id }}</td>
     <td>{{ e.login }}</td>
     <td>{{ e.nom }} {{ e.prenom }}</td>
+    <td>{{ e.naissance  | date: "dd/MM/yyyy"}}</td>
     <td>{{(getMaison(e)!.nom)}}</td>
     <td>
       <a
-        [routerLink]="['/compte', 'edit', e.id]"
+        [routerLink]="['/compte', 'professeurs','edit', e.id]"
         routerLinkActive="active"
         class="btn btn-outline-primary"
         >editer</a>

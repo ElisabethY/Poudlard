@@ -24,6 +24,11 @@ export class MaisonService {
     return this.http.put(`${MaisonService.URL}/${maison.id}`, this.maisonToJson(maison));
   }
 
+  public create(event: Maison): Observable<any> {
+    return this.http.post(MaisonService.URL, this.maisonToJson(event));
+  }
+
+
   private maisonToJson(maison: Maison): any {
     let obj = {
       id: maison.id,

@@ -9,6 +9,7 @@ export class Eleve {
     private _prenom?: string| undefined,
     private _naissance?: Date| undefined,
     private _maison?: Maison| undefined,
+    private _password?: any| undefined,
 
   ) {}
   public get id(): number| undefined {
@@ -57,5 +58,13 @@ export class Eleve {
 
   public set maison(value: Maison| undefined) {
     this._maison = value;
+  }
+
+  public get password(): any| undefined {
+    return this._password;
+  }
+
+  public set password(value: any| undefined) {
+    this._password = value;
   }
 }

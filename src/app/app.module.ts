@@ -8,14 +8,12 @@ import { AppComponent } from './app.component';
 import { MenuAdminComponent } from './component/menu-admin/menu-admin.component';
 import { EvenementComponent } from './component/evenement/evenement.component';
 import { MaisonComponent } from './component/maison/maison.component';
-import { AgendaComponent } from './component/cours/agenda/agenda.component';
 import { CompteEditComponent } from './component/comptes/compte-edit/compte-edit.component';
 import { CompteListComponent } from './component/comptes/compte-list/compte-list.component';
 import { BoutiqueListComponent } from './component/boutique/boutique-list/boutique-list.component';
 import { BoutiqueEditComponent } from './component/boutique/boutique-edit/boutique-edit.component';
 import { ProduitListComponent } from './component/boutique/produit-list/produit-list.component';
 import { ProduitEditComponent } from './component/boutique/produit-edit/produit-edit.component';
-import { CoursListComponent } from './component/cours/cours-list/cours-list.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routes } from './routes';
@@ -28,6 +26,9 @@ import { PanierComponent } from './component/boutique/panier/panier.component';
 
 import { LoginComponent } from './component/login/login.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MaisonEditComponent } from './component/maison/maison-edit/maison-edit.component';
+import { CoursListeComponent } from './component/cours/cours-liste/cours-liste.component';
+import { CoursEditComponent } from './component/cours/cours-edit/cours-edit.component';
 // import { FromTemplateComponent } from './component/formulaire/from-template/from-template.component';
 // import { FormCodeComponent } from './component/formulaire/form-code/form-code.component';
 
@@ -38,14 +39,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     MenuAdminComponent,
     EvenementComponent,
     MaisonComponent,
-    AgendaComponent,
     CompteEditComponent,
     CompteListComponent,
     BoutiqueListComponent,
     BoutiqueEditComponent,
     ProduitListComponent,
     ProduitEditComponent,
-    CoursListComponent,
     EventEditComponent,
     EleveComponent,
     ProfComponent,
@@ -53,6 +52,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     EleveEditComponent,
     PanierComponent,
     LoginComponent,
+    MaisonEditComponent,
+    CoursListeComponent,
+    CoursEditComponent,
     // FromTemplateComponent,
     // FormCodeComponent,
 

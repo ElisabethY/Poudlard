@@ -1,3 +1,7 @@
+import { CoursListeComponent } from './component/cours/cours-liste/cours-liste.component';
+import { ProfEditComponent } from './component/comptes/compte-list/prof/prof-edit/prof-edit.component';
+import { EleveEditComponent } from './component/comptes/compte-list/eleve/eleve-edit/eleve-edit.component';
+import { MaisonEditComponent } from './component/maison/maison-edit/maison-edit.component';
 import { LoginComponent } from './component/login/login.component';
 import { PanierComponent } from './component/boutique/panier/panier.component';
 import { ProfComponent } from './component/comptes/compte-list/prof/prof.component';
@@ -12,9 +16,7 @@ import { CompteEditComponent } from './component/comptes/compte-edit/compte-edit
 import { CompteListComponent } from './component/comptes/compte-list/compte-list.component';
 import { MaisonComponent } from './component/maison/maison.component';
 import { CoursEditComponent } from './component/cours/cours-edit/cours-edit.component';
-import { CoursListComponent } from './component/cours/cours-list/cours-list.component';
 import { EvenementComponent } from './component/evenement/evenement.component';
-import { AgendaComponent } from './component/cours/agenda/agenda.component';
 import { MenuAdminComponent } from './component/menu-admin/menu-admin.component';
 import { Routes } from "@angular/router";
  // import { FromTemplateComponent } from './component/formulaire/from-template/from-template.component';
@@ -28,14 +30,18 @@ const routes : Routes= [
 {path: 'evenement',component: EvenementComponent},
 {path: 'evenement/edit/:id',component: EventEditComponent},
 {path: 'evenement/add',component: EventEditComponent},
-{path: 'agenda',component: AgendaComponent},
-{path: 'cours',component: CoursListComponent},
+{path: 'cours',component: CoursListeComponent},
 {path: 'cours/edit',component: CoursEditComponent},
 {path: 'maison',component: MaisonComponent },
+{path: 'maison/edit/:id',component: MaisonEditComponent },
+
 {path: 'compte',component: CompteListComponent},
 {path: 'compte/professeurs',component: ProfComponent},
+{path: 'compte/professeurs/edit/:id',component: ProfEditComponent},
 {path: 'compte/eleves',component: EleveComponent},
+{path: 'compte/eleves/edit/:id',component: EleveEditComponent},
 {path: 'compte/edit',component: CompteEditComponent},
+
 {path: 'boutique',component: BoutiqueListComponent},
 {path: 'boutique/produits/:id',component: ProduitListComponent},
 {path: 'panier/compte/:id',component: PanierComponent},
