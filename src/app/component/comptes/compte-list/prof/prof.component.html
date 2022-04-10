@@ -1,0 +1,32 @@
+<div>
+  <div> <a routerLink="/compte/professeurs" routerLinkActive="active" class="btn btn-outline-primary">
+    Professeurs</a>
+  <a routerLink="/compte/eleves" routerLinkActive="active" class="btn btn-outline-primary">
+    Eleves</a>
+  </div>
+  </div>
+
+<table class="table">
+  <tr *ngFor="let e of profs">
+    <td>{{ e.id }}</td>
+    <td>{{ e.login }}</td>
+    <td>{{ e.nom }} {{ e.prenom }}</td>
+    <td>{{(getMaison(e)!.nom)}}</td>
+    <td>
+      <a
+        [routerLink]="['/compte', 'edit', e.id]"
+        routerLinkActive="active"
+        class="btn btn-outline-primary"
+        >editer</a>
+    </td>
+    <td>
+      <button class="btn btn-outline-danger" (click)="delete(e.id!)">
+        supprimer
+      </button>
+    </td>
+  </tr>
+</table>
+<a routerLink="/compte/add" routerLinkActive="active" class="btn btn-link"
+  >Creer</a
+>
+

@@ -1,0 +1,24 @@
+<table class="table">
+  <tr *ngFor="let e of events">
+    <td>{{ e.id }}</td>
+    <td>{{ e.nomEven }}</td>
+    <td>{{ e.date  | date: "dd/MM/yyyy"}}</td>
+    <td>{{ e.heure}}</td>
+    <td>
+      <a
+        [routerLink]="['/evenement', 'edit', e.id]"
+        routerLinkActive="active"
+        class="btn btn-outline-primary"
+        >editer</a>
+    </td>
+    <td>
+      <button class="btn btn-outline-danger" (click)="delete(e.id!)">
+        supprimer
+      </button>
+    </td>
+  </tr>
+</table>
+<a routerLink="/evenement/add" routerLinkActive="active" class="btn btn-link"
+  >créer un evenement</a
+>
+

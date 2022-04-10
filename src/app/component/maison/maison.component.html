@@ -1,0 +1,26 @@
+<table class="table">
+  <tr>
+    <td>ID</td>
+    <td>Maison</td>
+    <td>Score</td>
+  </tr>
+  <tr *ngFor="let m of maisons">
+    <td>{{ m.id }}</td>
+    <td>{{ m.nom }}</td>
+    <td>{{ m.score}}</td>
+    <td>
+      <a
+        [routerLink]="['/maison', 'edit', m.id]"
+        routerLinkActive="active"
+        class="btn btn-outline-primary"
+        >editer</a>
+    </td>
+    <td>
+      <button class="btn btn-outline-danger" (click)="delete(m.id!)">
+        supprimer
+      </button>
+    </td>
+  </tr>
+</table>
+
+
