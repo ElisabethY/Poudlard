@@ -1,3 +1,4 @@
+import { MenuComponent } from './component/menu/menu.component';
 import { MaisonEditComponent } from './component/maison/maison-edit/maison-edit.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
@@ -6,7 +7,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { MenuAdminComponent } from './component/menu-admin/menu-admin.component';
 import { EvenementComponent } from './component/evenement/evenement.component';
 import { MaisonComponent } from './component/maison/maison.component';
 import { CompteListComponent } from './component/comptes/compte-list/compte-list.component';
@@ -37,7 +37,7 @@ import { BulletinComponent } from './component/cours/bulletin/bulletin.component
 @NgModule({
   declarations: [
     AppComponent,
-    MenuAdminComponent,
+    MenuComponent,
     EvenementComponent,
     MaisonComponent,
     CompteListComponent,

@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         );
         localStorage.setItem('role', value);
         this.erreur = false;
-        this.router.navigateByUrl('/boutique');
+        this.router.navigateByUrl('/evenement');
       },
       error: (error: any) => {
         console.log(error);
