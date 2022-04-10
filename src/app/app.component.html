@@ -1,1 +1,13 @@
+<span *ngIf="isAuthenticated()">Bonjour {{ login }}</span>
+<a
+  *ngIf="!isAuthenticated()"
+  routerLink="/connexion"
+  routerLinkActive="active"
+  class="btn btn-link"
+  >login</a
+>
+<button *ngIf="isAuthenticated()" (click)="logout()" class="btn btn-link">
+  logout
+</button>
 <app-menu></app-menu>
+<router-outlet></router-outlet>

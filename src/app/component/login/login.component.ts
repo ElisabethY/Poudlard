@@ -5,19 +5,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-login:string='';
-password: string='';
-erreur: boolean =false;
-message: string = '';
+  login: string = '';
+  password: string = '';
+  erreur: boolean = false;
+  message: string = '';
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private aR: ActivatedRoute,
-    ) { }
+    private aR: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.aR.queryParams.subscribe((params) => {
@@ -37,7 +37,7 @@ message: string = '';
         );
         localStorage.setItem('role', value);
         this.erreur = false;
-       this.router.navigateByUrl('/boutique');
+        this.router.navigateByUrl('/boutique');
       },
       error: (error: any) => {
         console.log(error);
@@ -46,5 +46,4 @@ message: string = '';
       },
     });
   }
-
 }
