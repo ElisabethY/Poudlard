@@ -1,8 +1,12 @@
+
+
 <a routerLink="/evenement" routerLinkActive="active" class="btn btn-link"> evenements </a>
 <a routerLink="/maison" routerLinkActive="active" class="btn btn-link"> maisons </a>
+
+<span *ngIf="isAuthenticated()">
 <a routerLink="/compte" routerLinkActive="active" class="btn btn-link"> comptes </a>
 <a routerLink="/cours" routerLinkActive="active" class="btn btn-link"> cours </a>
 <a routerLink="/boutique" routerLinkActive="active" class="btn btn-link"> boutique </a>
-
+</span>
 
 <router-outlet></router-outlet>

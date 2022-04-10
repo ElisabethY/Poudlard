@@ -1,3 +1,4 @@
+import { MenuComponent } from './component/menu/menu.component';
 import { ListeElevesComponent } from './component/cours/liste-eleves/liste-eleves.component';
 import { CoursListeComponent } from './component/cours/cours-liste/cours-liste.component';
 import { ProfEditComponent } from './component/comptes/compte-list/prof/prof-edit/prof-edit.component';
@@ -17,7 +18,7 @@ import { CompteListComponent } from './component/comptes/compte-list/compte-list
 import { MaisonComponent } from './component/maison/maison.component';
 import { CoursEditComponent } from './component/cours/cours-edit/cours-edit.component';
 import { EvenementComponent } from './component/evenement/evenement.component';
-import { MenuAdminComponent } from './component/menu-admin/menu-admin.component';
+
 import { Routes } from "@angular/router";
  // import { FromTemplateComponent } from './component/formulaire/from-template/from-template.component';
 
@@ -26,7 +27,7 @@ const routes : Routes= [
 
 {path: 'connexion',component: LoginComponent},
 
-{path: 'admin',component: MenuAdminComponent},
+{path: 'menu',component: MenuComponent},
 {path: 'evenement',component: EvenementComponent},
 {path: 'evenement/edit/:id',component: EventEditComponent},
 {path: 'evenement/add',component: EventEditComponent},

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './service/auth.service';
 import { Component } from '@angular/core';
 
@@ -9,7 +10,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Poudlard';
 
-  public constructor(private authService: AuthService) {}
+  public constructor(private authService: AuthService, private router:Router) {}
 
   get login() {
     return localStorage.getItem('login');
@@ -21,5 +22,7 @@ export class AppComponent {
 
   logout() {
     localStorage.clear();
+    this.router.navigateByUrl('/connexion');
+
   }
 }
