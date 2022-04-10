@@ -28,6 +28,7 @@ export class ProduitListComponent implements OnInit {
 
     this.activatedRoute.params.subscribe((params) => {
       this.identifiant = params['id'];
+      console.log(params)
     });
 
     {
@@ -39,8 +40,9 @@ export class ProduitListComponent implements OnInit {
           {
             this.produit.push(
               new Produit(p.id, p.libelle, p.description, p.prix));
+
           }
-        }
+        } console.log(result)
       });
     }
   }

@@ -1,1 +1,28 @@
-<p>cours-liste works!</p>
+<table class="table">
+  <tr *ngFor="let c of cours">
+    <td>{{ c.id }}</td>
+    <td>{{ c.intitule }}</td>
+    <td>{{c.professeur}}</td>
+    <td>
+      <a [routerLink]="['/cours', 'eleves',(c.id)]" routerLinkActive="active"class="btn btn-outline-primary"
+      >Liste des eleves</a
+    >
+    </td>
+    <td>
+      <a
+        [routerLink]="['/cours', 'edit', c.id]"
+        routerLinkActive="active"
+        class="btn btn-outline-primary"
+        >editer</a>
+    </td>
+    <td>
+      <button class="btn btn-outline-danger" (click)="delete(c.id!)">
+        supprimer
+      </button>
+    </td>
+  </tr>
+</table>
+<button routerLink="/cours/add" routerLinkActive="active" class="btn btn-outline-success"
+  >Ajouter un cours</button>
+
+

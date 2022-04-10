@@ -1,3 +1,4 @@
+import { MaisonEditComponent } from './component/maison/maison-edit/maison-edit.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { AuthService } from './service/auth.service';
@@ -8,7 +9,6 @@ import { AppComponent } from './app.component';
 import { MenuAdminComponent } from './component/menu-admin/menu-admin.component';
 import { EvenementComponent } from './component/evenement/evenement.component';
 import { MaisonComponent } from './component/maison/maison.component';
-import { CompteEditComponent } from './component/comptes/compte-edit/compte-edit.component';
 import { CompteListComponent } from './component/comptes/compte-list/compte-list.component';
 import { BoutiqueListComponent } from './component/boutique/boutique-list/boutique-list.component';
 import { BoutiqueEditComponent } from './component/boutique/boutique-edit/boutique-edit.component';
@@ -26,9 +26,10 @@ import { PanierComponent } from './component/boutique/panier/panier.component';
 
 import { LoginComponent } from './component/login/login.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MaisonEditComponent } from './component/maison/maison-edit/maison-edit.component';
 import { CoursListeComponent } from './component/cours/cours-liste/cours-liste.component';
 import { CoursEditComponent } from './component/cours/cours-edit/cours-edit.component';
+import { ListeElevesComponent } from './component/cours/liste-eleves/liste-eleves.component';
+import { BulletinComponent } from './component/cours/bulletin/bulletin.component';
 // import { FromTemplateComponent } from './component/formulaire/from-template/from-template.component';
 // import { FormCodeComponent } from './component/formulaire/form-code/form-code.component';
 
@@ -39,7 +40,6 @@ import { CoursEditComponent } from './component/cours/cours-edit/cours-edit.comp
     MenuAdminComponent,
     EvenementComponent,
     MaisonComponent,
-    CompteEditComponent,
     CompteListComponent,
     BoutiqueListComponent,
     BoutiqueEditComponent,
@@ -55,6 +55,8 @@ import { CoursEditComponent } from './component/cours/cours-edit/cours-edit.comp
     MaisonEditComponent,
     CoursListeComponent,
     CoursEditComponent,
+    ListeElevesComponent,
+    BulletinComponent,
     // FromTemplateComponent,
     // FormCodeComponent,
 

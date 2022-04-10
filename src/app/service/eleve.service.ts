@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 export class EleveService {
 
 
-  private static URL: string = 'http://localhost:8080/poudlard/api/eleve';
+  private static URL: string = 'http://localhost:8080/poudlard/api/eleve/cours';
 
   constructor(private http: HttpClient) {}
 

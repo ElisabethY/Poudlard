@@ -1,3 +1,4 @@
+import { ListeElevesComponent } from './component/cours/liste-eleves/liste-eleves.component';
 import { CoursListeComponent } from './component/cours/cours-liste/cours-liste.component';
 import { ProfEditComponent } from './component/comptes/compte-list/prof/prof-edit/prof-edit.component';
 import { EleveEditComponent } from './component/comptes/compte-list/eleve/eleve-edit/eleve-edit.component';
@@ -12,7 +13,6 @@ import { ProduitEditComponent } from './component/boutique/produit-edit/produit-
 import { ProduitListComponent } from './component/boutique/produit-list/produit-list.component';
 import { BoutiqueEditComponent } from './component/boutique/boutique-edit/boutique-edit.component';
 import { BoutiqueListComponent } from './component/boutique/boutique-list/boutique-list.component';
-import { CompteEditComponent } from './component/comptes/compte-edit/compte-edit.component';
 import { CompteListComponent } from './component/comptes/compte-list/compte-list.component';
 import { MaisonComponent } from './component/maison/maison.component';
 import { CoursEditComponent } from './component/cours/cours-edit/cours-edit.component';
@@ -30,17 +30,22 @@ const routes : Routes= [
 {path: 'evenement',component: EvenementComponent},
 {path: 'evenement/edit/:id',component: EventEditComponent},
 {path: 'evenement/add',component: EventEditComponent},
+
 {path: 'cours',component: CoursListeComponent},
-{path: 'cours/edit',component: CoursEditComponent},
+{path: 'cours/edit/:id',component: CoursEditComponent},
+{path: 'cours/eleves/:id',component: ListeElevesComponent},
+
+{path: 'eleves/bulletin/:id',component: CoursEditComponent},
+
 {path: 'maison',component: MaisonComponent },
 {path: 'maison/edit/:id',component: MaisonEditComponent },
+{path: 'maison/add',component: MaisonEditComponent },
 
 {path: 'compte',component: CompteListComponent},
 {path: 'compte/professeurs',component: ProfComponent},
 {path: 'compte/professeurs/edit/:id',component: ProfEditComponent},
 {path: 'compte/eleves',component: EleveComponent},
 {path: 'compte/eleves/edit/:id',component: EleveEditComponent},
-{path: 'compte/edit',component: CompteEditComponent},
 
 {path: 'boutique',component: BoutiqueListComponent},
 {path: 'boutique/produits/:id',component: ProduitListComponent},

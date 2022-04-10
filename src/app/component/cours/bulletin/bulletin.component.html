@@ -1,0 +1,26 @@
+<table class="table">
+  <tr>
+    <td>Cours</td>
+    <td>Note</td>
+    <td>Commentaire</td>
+  </tr>
+
+  <tr *ngFor="let b of bulletins">
+    <td>{{ b.cours }}</td>
+    <td>{{ b.note }}</td>
+    <td>{{ b.commentaire }}</td>
+
+  <td>
+    <a
+      [routerLink]="['/bulletin', 'edit', b.id]"
+      routerLinkActive="active"
+      class="btn btn-outline-primary"
+      >editer</a>
+  </td>
+</tr>
+
+</table>
+  <button routerLink="/bulletin/add" routerLinkActive="active" class="btn btn-outline-success"
+  >ajouter</button>
+
+

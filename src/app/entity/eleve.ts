@@ -1,3 +1,4 @@
+import { Cours } from './cours';
 import { Maison } from "./maison";
 
 export class Eleve {
@@ -10,6 +11,8 @@ export class Eleve {
     private _naissance?: Date| undefined,
     private _maison?: Maison| undefined,
     private _password?: any| undefined,
+    private _cours?: Cours[]| undefined,
+
 
   ) {}
   public get id(): number| undefined {
@@ -66,5 +69,13 @@ export class Eleve {
 
   public set password(value: any| undefined) {
     this._password = value;
+  }
+
+  public get cours(): Cours[]| undefined {
+    return this._cours;
+  }
+
+  public set cours(value: Cours[]| undefined) {
+    this._cours = value;
   }
 }

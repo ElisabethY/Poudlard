@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-menu',
+  selector: 'app-menu-admin',
   templateUrl: './menu-admin.component.html',
   styleUrls: ['./menu-admin.component.css']
 })

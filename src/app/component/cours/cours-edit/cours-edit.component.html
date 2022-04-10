@@ -1,1 +1,27 @@
-<p>cours-edit works!</p>
+<div>
+  <div class="form-group">
+    <label>id:</label>
+    <input
+      [(ngModel)]="cours.id"
+      readonly
+      class="form-control"
+      placeholder="generation auto"
+    />
+  </div>
+  <div class="form-group">
+    <label>nom de l'evenement:</label>
+    <input type="text" [(ngModel)]="cours.intitule" class="form-control" />
+  </div>
+  </div>
+  <div class="form-group">
+    <label>Professeur:</label>
+    <input type="text" [(ngModel)]="cours.professeur" class="form-control" />
+  </div>
+
+  <div>
+    <button (click)="save()" class="btn btn-outline-success">
+      enregistrer
+    </button>
+    <a routerLink="/evenement" class="btn btn-outline-warning">annuler</a>
+  </div>
+
