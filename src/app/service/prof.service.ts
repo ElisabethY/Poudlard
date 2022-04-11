@@ -40,6 +40,9 @@ export class ProfService {
       prenom: prof.prenom,
       naissance: prof.naissance,
       maison: prof.maison,
+      password: prof.password,
+      solde:prof.solde,
+      type: prof.type
     };
     return obj;
   }

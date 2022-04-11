@@ -1,5 +1,5 @@
 
-<span *ngIf="isAuthenticated()">Bonjour {{ login }} {{prenom}}</span>
+<span *ngIf="isAuthenticated()">Bonjour {{ login }} {{role}}</span>
 <a
   *ngIf="!isAuthenticated()"
   routerLink="/connexion"
