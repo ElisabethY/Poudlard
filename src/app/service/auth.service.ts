@@ -18,7 +18,8 @@ export class AuthService {
     );
   }
   isAuthenticated(): boolean {
-    console.log('__________');
     return localStorage.getItem('login') ? true : false;
   }
+
+
 }

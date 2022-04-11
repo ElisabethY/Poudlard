@@ -30,6 +30,7 @@ import { CoursListeComponent } from './component/cours/cours-liste/cours-liste.c
 import { CoursEditComponent } from './component/cours/cours-edit/cours-edit.component';
 import { ListeElevesComponent } from './component/cours/liste-eleves/liste-eleves.component';
 import { BulletinComponent } from './component/cours/bulletin/bulletin.component';
+import { ProfilComponent } from './component/comptes/profil/profil.component';
 // import { FromTemplateComponent } from './component/formulaire/from-template/from-template.component';
 // import { FormCodeComponent } from './component/formulaire/form-code/form-code.component';
 
@@ -57,6 +58,7 @@ import { BulletinComponent } from './component/cours/bulletin/bulletin.component
     CoursEditComponent,
     ListeElevesComponent,
     BulletinComponent,
+    ProfilComponent,
     // FromTemplateComponent,
     // FormCodeComponent,
 
@@ -64,7 +66,7 @@ import { BulletinComponent } from './component/cours/bulletin/bulletin.component
 
   ],
   imports: [
-    HttpClientModule, BrowserModule, RouterModule.forRoot(routes),FormsModule, ReactiveFormsModule, RouterModule,
+    HttpClientModule, BrowserModule, RouterModule.forRoot(routes),FormsModule, ReactiveFormsModule, RouterModule
   ],
   // permet que ds tous le module on puisse user l'interceptor pour toute les requetes
   providers: [{provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}],
@@ -72,20 +74,5 @@ import { BulletinComponent } from './component/cours/bulletin/bulletin.component
 })
 export class AppModule {
 title = 'Poudlard';
-
-public constructor(private authService: AuthService){}
-
-get login(){
-  return localStorage.getItem('login');
-}
-
-isAuthenticated(){
-  return this.authService.isAuthenticated;
-}
-
-logout() {
-  localStorage.clear();
-}
-
 
 }
