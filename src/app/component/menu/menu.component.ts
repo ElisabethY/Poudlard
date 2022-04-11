@@ -16,4 +16,9 @@ export class MenuComponent implements OnInit {
   isAuthenticated() {
     return this.authService.isAuthenticated();
   }
+
+  get role() {
+     return localStorage.getItem('role');
+  }
+
 }

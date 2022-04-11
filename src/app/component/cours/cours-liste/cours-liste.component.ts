@@ -1,3 +1,4 @@
+import { AuthService } from './../../../service/auth.service';
 import { CoursService } from './../../../service/cours.service';
 import { Maison } from './../../../entity/maison';
 
@@ -13,7 +14,8 @@ import { Component, OnInit } from '@angular/core';
 export class CoursListeComponent implements OnInit {
   cours: Cours[]=[];
 
-  constructor(private courService: CoursService) {}
+  constructor(private courService: CoursService,
+    private authService: AuthService) {}
 
   ngOnInit(): void {
     this.list();
@@ -35,5 +37,12 @@ export class CoursListeComponent implements OnInit {
         console.log("deleted")
         this.list();
       });
+    }
+    isAuthenticated() {
+      return this.authService.isAuthenticated();
+    }
+
+    get role() {
+       return localStorage.getItem('role');
     }
 }

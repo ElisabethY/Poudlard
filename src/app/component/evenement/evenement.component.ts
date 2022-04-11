@@ -1,3 +1,4 @@
+import { AuthService } from './../../service/auth.service';
 import { EvenementService } from './../../service/evenement.service';
 import { Evenement } from './../../entity/evenement';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class EvenementComponent implements OnInit {
 events: Evenement[]=[];
 
-  constructor(private eventService: EvenementService) {}
+  constructor(private eventService: EvenementService,
+    private authService: AuthService) {}
 
   ngOnInit(): void {
     this.list();
@@ -31,4 +33,13 @@ events: Evenement[]=[];
         this.list();
       });
     }
+    isAuthenticated() {
+      return this.authService.isAuthenticated();
+    }
+
+    get role() {
+       return localStorage.getItem('role');
+    }
+
+
 }
