@@ -2,6 +2,7 @@ import { Produit } from './../../../entity/produit';
 import { ProduitService } from 'src/app/service/produit.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-produit-edit',
@@ -14,7 +15,7 @@ export class ProduitEditComponent implements OnInit {
   constructor(
     private aR: ActivatedRoute,
     private produitService: ProduitService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -43,4 +44,5 @@ export class ProduitEditComponent implements OnInit {
   goList() {
     this.router.navigateByUrl('/boutique');
   }
+
 }

@@ -1,3 +1,4 @@
+import { ProduitDetailComponent } from './component/boutique/produit-detail/produit-detail.component';
 import { ProfilComponent } from './component/comptes/profil/profil.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { ListeElevesComponent } from './component/cours/liste-eleves/liste-eleves.component';
@@ -54,8 +55,8 @@ const routes : Routes= [
 {path: 'boutique/produits/:id',component: ProduitListComponent},
 {path: 'panier/compte/:id',component: PanierComponent},
 {path: 'boutique/edit',component: BoutiqueEditComponent},
-{path: 'produit',component: ProduitListComponent},
-{path: 'produit/edit',component: ProduitEditComponent},
+{path: 'boutique/produit/detail/:id',component: ProduitDetailComponent},
+{path: 'boutique/produit/edit/:id',component: ProduitEditComponent},
 
 //{path: 'formulaire/template',component: FromTemplateComponent},
 ]
