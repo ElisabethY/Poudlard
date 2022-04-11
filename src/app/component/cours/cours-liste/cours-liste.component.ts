@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from './../../../service/auth.service';
 import { CoursService } from './../../../service/cours.service';
 import { Maison } from './../../../entity/maison';
@@ -13,12 +14,34 @@ import { Component, OnInit } from '@angular/core';
 
 export class CoursListeComponent implements OnInit {
   cours: Cours[]=[];
+  identifiant: number = 0;
+  courss : Cours= new Cours();
+
 
   constructor(private courService: CoursService,
     private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.list();
+    if(localStorage.getItem('role')=='eleve' || localStorage.getItem('role')=='admin')
+   { this.list();}
+   if(localStorage.getItem('role')=='prof')
+   { this.listbyProf();}
+
+  }
+  listbyProf(){
+    this.courService.getAll().subscribe((result)=> {
+      this.cours=[];
+      for (let c of result){
+        console.log(c.professeur?.id) //undefined x9
+        if (c.professeur?.id == Number(localStorage.getItem('id')))
+        {
+
+          this.cours.push(
+            new Cours(c.id, c.intitule, c.professeur.nom)
+          )
+        }
+      }
+    })
   }
   list() {
     this.courService.getAll().subscribe((result) => {
@@ -28,7 +51,7 @@ export class CoursListeComponent implements OnInit {
           new Cours(e.id, e.intitule, e.professeur)
 
         )
-      } console.log(result);
+      }
     });
  }
 

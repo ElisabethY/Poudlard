@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
 
         this.erreur = false;
         this.router.navigateByUrl('/evenement');
+        
       },
       error: (error: any) => {
         console.log(error);
