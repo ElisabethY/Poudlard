@@ -24,6 +24,7 @@ export class ProfilComponent implements OnInit {
   isOK: boolean = false;
   soldeNew: number = 0;
   monSolde: number = 0;
+  suc: boolean = false
   constructor(
     private authService: AuthService,
     private aR: ActivatedRoute,
