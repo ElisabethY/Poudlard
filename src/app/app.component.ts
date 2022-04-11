@@ -15,7 +15,9 @@ export class AppComponent {
   get login() {
     return localStorage.getItem('login');
   }
-
+  get prenom() {
+    return localStorage.getItem('prenom');
+  }
   isAuthenticated() {
     return this.authService.isAuthenticated();
   }

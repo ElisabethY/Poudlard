@@ -1,3 +1,5 @@
+import { Eleve } from './../../entity/eleve';
+import { Maison } from './../../entity/maison';
 import { AuthService } from './../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,6 +10,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  prenom: string ='';
+  nom: string ='';
+  solde: number =0;
+  maison: Maison=new Maison();
+
+
   login: string = '';
   password: string = '';
   erreur: boolean = false;
@@ -35,7 +43,19 @@ export class LoginComponent implements OnInit {
           'token',
           'Basic ' + btoa(this.login + ':' + this.password)
         );
-        localStorage.setItem('role', value);
+        let jsonObject = JSON.parse(value);
+        console.log(jsonObject)
+        localStorage.setItem('role', jsonObject.type);
+        localStorage.setItem('id', jsonObject.id);
+        localStorage.setItem('password', jsonObject.password);
+        localStorage.setItem('prenom', jsonObject.prenom);
+        localStorage.setItem('nom', jsonObject.nom);
+        localStorage.setItem('naissance', jsonObject.naissance);
+        localStorage.setItem('solde', jsonObject.solde);
+        localStorage.setItem('maison', jsonObject.maison.nom);
+        localStorage.setItem('score', jsonObject.maison.score);
+        localStorage.setItem('naissance', jsonObject.naissance);
+
         this.erreur = false;
         this.router.navigateByUrl('/evenement');
       },
@@ -45,5 +65,8 @@ export class LoginComponent implements OnInit {
         this.message = 'informations incorrectes';
       },
     });
+
   }
+
+
 }
