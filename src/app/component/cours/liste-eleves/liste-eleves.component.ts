@@ -33,11 +33,11 @@ export class ListeElevesComponent implements OnInit {
     {
       this.eleveService.get(this.identifiant).subscribe((result) => {
         this.eleves = [];
-        console.log(result)
+
         for (let p of result) {
           {
             this.eleves.push(
-              new Eleve( p.nom, p.prenom));
+              new Eleve(p.nom, p.prenom));
           }
         }
       });

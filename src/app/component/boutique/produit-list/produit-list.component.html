@@ -1,41 +1,39 @@
 <!-- Si le compte est prof ou eleve -->
-<div> <a routerLink="/panier/compte" routerLinkActive="active" class="btn btn-outline-primary"
-  >Panier</a
-  > </div>
+<div> <a routerLink="/panier/compte" routerLinkActive="active" class="btn btn-outline-primary">Panier</a> </div>
 
 <table class="table">
   <tr>
     <td>ID</td>
     <td>Libellé</td>
-    <td>Description</td>
     <td>Prix ($)</td>
 
   </tr>
 
-    <tr *ngFor="let b of produit">
-      <td>{{b.id}}</td>
-      <td>{{b.libelle}} </td>
-      <td>{{b.description}} </td>
-      <td>{{b.prix}}</td>
+  <tr *ngFor="let b of produit">
+    <td>{{b.id}}</td>
+    <td>{{b.libelle}} </td>
+    <td>{{b.prix}}</td>
 
+    <td>
+      <a [routerLink]="['/boutique','produit', 'detail', b.id]" routerLinkActive="active"
+        class="btn btn-outline-primary">Voir</a>
+    </td>
+    <span *ngIf="isAuthenticated() && role=='admin'">
       <td>
-        <button class="btn btn-outline-primary" (click)="addPanier()">+</button>
+        <a [routerLink]="['/boutique','produit', 'edit', b.id]" routerLinkActive="active"
+          class="btn btn-outline-primary">editer</a>
       </td>
       <td>
-        <a [routerLink]="['/produit', 'edit', b.id]"
-          routerLinkActive="active"
-          class="btn btn-outline-primary"
-          >editer</a>
-      </td>
+
       <td>
         <button class="btn btn-outline-danger" (click)="delete(b.id!)">
           supprimer
         </button>
       </td>
-    </tr>
-  </table>
+    </span>
+  </tr>
 
-  <a routerLink="/boutique/add" routerLinkActive="active" class="btn btn-link"
-    >ajouter une boutique</a
-  >
-
+</table>
+<span *ngIf="isAuthenticated() && role=='admin'">
+<a routerLink="/boutique/add" routerLinkActive="active" class="btn btn-link">ajouter une boutique</a>
+</span>

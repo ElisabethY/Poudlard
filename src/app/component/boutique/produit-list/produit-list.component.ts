@@ -1,9 +1,10 @@
+import { AuthService } from 'src/app/service/auth.service';
 import { ActivatedRoute } from '@angular/router';
-import { BoutiqueService } from './../../../service/boutique.service';
 import { Produit } from './../../../entity/produit';
 import { Boutique } from './../../../entity/boutique';
 import { Component, OnInit } from '@angular/core';
 import { ProduitService } from 'src/app/service/produit.service';
+import { Panier } from 'src/app/entity/panier';
 
 @Component({
   selector: 'app-produit-list',
@@ -12,12 +13,15 @@ import { ProduitService } from 'src/app/service/produit.service';
 })
 export class ProduitListComponent implements OnInit {
   produit: Produit[] = [];
-  boutiques: Boutique[] = [];
+  article : Produit= new Produit;
   identifiant: number = 0;
+
+
 
   constructor(
     private produitService: ProduitService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -53,9 +57,12 @@ export class ProduitListComponent implements OnInit {
     });
   }
 
- //si authentifié (compte PROF OU ELEVE)
-// au click il faut pouvoir ajouter les articles dans le panier du compte
-  addPanier(){
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
+  }
 
+  get role() {
+    return localStorage.getItem('role');
   }
 }
+
