@@ -1,12 +1,24 @@
-<table class="table">
+
+
+<table class="table table-striped table-responsive" >
+<thead>
+  <tr>
+    <th>ID</th>
+    <th>Evenement</th>
+    <th>Date</th>
+    <th>Heure</th>
+  </tr>
+</thead>
+<tbody>
   <tr *ngFor="let e of events">
     <td>{{ e.id }}</td>
     <td>{{ e.nomEven }}</td>
     <td>{{ e.date  | date: "dd/MM/yyyy"}}</td>
     <td>{{ e.heure}}</td>
+                                              <!-- EDITION UNIQUEMENT POUR ADMIN -->
+    <span *ngIf="isAuthenticated() && role=='admin' ">
     <td>
-      <a
-        [routerLink]="['/evenement', 'edit', e.id]"
+      <a [routerLink]="['/evenement', 'edit', e.id]"
         routerLinkActive="active"
         class="btn btn-outline-primary"
         >editer</a>
@@ -16,9 +28,14 @@
         supprimer
       </button>
     </td>
+  </span>
+
   </tr>
+</tbody>
 </table>
+<span *ngIf="isAuthenticated() && role=='admin' ">
 <button routerLink="/evenement/add" routerLinkActive="active" class="btn btn-outline-success"
   >créer un evenement</button>
+</span>
 
 

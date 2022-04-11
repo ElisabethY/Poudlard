@@ -1,3 +1,4 @@
+import { AuthService } from './../../service/auth.service';
 import { MaisonService } from './../../service/maison.service';
 import { Maison } from './../../entity/maison';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,8 @@ export class MaisonComponent implements OnInit {
   ajouter:number=0;
   // house: Maison = new Maison;
 
-  constructor(private maisonService: MaisonService) {
+  constructor(private maisonService: MaisonService
+    , private authService:AuthService) {
     //this.house = new Maison;
 
   }
@@ -40,4 +42,13 @@ export class MaisonComponent implements OnInit {
       this.list();
     });
   }
+
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
+  }
+
+  get role() {
+     return localStorage.getItem('role');
+  }
+
 }

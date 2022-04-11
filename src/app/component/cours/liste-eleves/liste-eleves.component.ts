@@ -1,3 +1,4 @@
+import { AuthService } from './../../../service/auth.service';
 import { Eleve } from './../../../entity/eleve';
 import { ActivatedRoute } from '@angular/router';
 import { EleveService } from './../../../service/eleve.service';
@@ -14,7 +15,8 @@ export class ListeElevesComponent implements OnInit {
 
   constructor(
     private eleveService:EleveService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +40,6 @@ export class ListeElevesComponent implements OnInit {
               new Eleve( p.nom, p.prenom));
           }
         }
-        //console.log(result)
       });
     }
   }
@@ -48,5 +49,11 @@ export class ListeElevesComponent implements OnInit {
       this.list();
     });
   }
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
+  }
 
+  get role() {
+     return localStorage.getItem('role');
+  }
 }

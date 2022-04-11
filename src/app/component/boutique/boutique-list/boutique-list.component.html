@@ -15,6 +15,7 @@
     <td> {{b.nom}} </td>
     <td>{{b.adresse}} </td>
     <td>{{b.categorie}}</td>
+    <span *ngIf="isAuthenticated() && role=='admin'">
     <td>
       <a
         [routerLink]="['/boutique','edit', b.id]"
@@ -26,7 +27,9 @@
       <button class="btn btn-outline-danger" (click)="delete(b.id!)">
         supprimer
       </button>
+
     </td>
+  </span>
     <td>
       <a [routerLink]="['/boutique', 'produits',(b.id)]" routerLinkActive="active"class="btn btn-outline-primary"
       >Liste des produits</a
@@ -34,9 +37,10 @@
     </td>
   </tr>
 </table>
-
+<span *ngIf="isAuthenticated() && role=='admin'">
 <a routerLink="/boutique/edit" routerLinkActive="active" class="btn btn-link"
   >ajouter une boutique</a
 >
+</span>
 
 
