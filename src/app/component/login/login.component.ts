@@ -10,12 +10,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  prenom: string ='';
-  nom: string ='';
-  solde: number =0;
-  maison: Maison=new Maison();
-
-
   login: string = '';
   password: string = '';
   erreur: boolean = false;
@@ -31,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.aR.queryParams.subscribe((params) => {
       if (params['auth']) {
         this.erreur = true;
-        this.message = 'il faut vous identifier pour acceder à cette page';
+        this.message = 'Identifiants non reconnus';
       }
     });
   }
@@ -65,8 +59,6 @@ export class LoginComponent implements OnInit {
         this.message = 'informations incorrectes';
       },
     });
-
   }
-
 
 }

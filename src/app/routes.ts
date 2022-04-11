@@ -1,3 +1,4 @@
+import { ProfilComponent } from './component/comptes/profil/profil.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { ListeElevesComponent } from './component/cours/liste-eleves/liste-eleves.component';
 import { CoursListeComponent } from './component/cours/cours-liste/cours-liste.component';
@@ -26,6 +27,7 @@ export
 const routes : Routes= [
 
 {path: 'connexion',component: LoginComponent},
+{path: 'profil',component: ProfilComponent},
 
 {path: 'menu',component: MenuComponent},
 {path: 'evenement',component: EvenementComponent},

@@ -41,6 +41,9 @@ export class EleveService {
       prenom: eleve.prenom,
       naissance: eleve.naissance,
       maison: eleve.maison,
+      password: eleve.password,
+      solde:eleve.solde,
+      type: eleve.type
     };
     return obj;
   }

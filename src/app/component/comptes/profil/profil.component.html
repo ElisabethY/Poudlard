@@ -1,1 +1,59 @@
-<p>profil works!</p>
+<table class="table table-striped table-inverse table-responsive">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Nom </th>
+      <td scope="row">{{nom}}</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Prenom</th>
+      <td scope="row">{{prenom}}</td>
+    </tr>
+    <tr>
+      <th>Maison</th>
+      <td scope="row">{{maison}}</td>
+    </tr>
+    <tr>
+      <th>Solde</th>
+      <td scope="row">{{solde}}</td>
+    </tr>
+  </tbody>
+</table>
+<button class="btn btn-outline-primary" (click)="edition()">Recharger</button>
+
+<span *ngIf="isEdition==true">
+  <div>
+    <div>
+      <div *ngIf="erreur" class="alert alert-danger">
+        {{message}}
+      </div>
+      <label>Login</label>
+      <input type="text" class="form-control" [(ngModel)]="logins" />
+    </div>
+    <div>
+      <button (click)="check()" class="btn btn-outline-success">
+        Valider
+      </button>
+    </div>
+  </div>
+
+
+</span>
+
+<span *ngIf="isOK==true">
+  <div class="form-group">
+    <label>Saisir le montant: </label>
+    <span>
+      <input *ngIf="role()=='prof'" type="number" [(ngModel)]="soldeNew" class="form-control" />
+      <div class="form-group">
+      </div>
+    </span>
+    <span> <input *ngIf="role()=='eleve'" type="number" [(ngModel)]="soldeNew" class="form-control" />
+    </span>
+    <button (click)="recharge()" class="btn btn-outline-success">
+      Valider
+    </button>
+  </div>
+
+</span>
