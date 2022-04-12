@@ -10,7 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./panier.component.css']
 })
 export class PanierComponent implements OnInit {
-  monPanier = JSON.parse(localStorage.getItem('monPanier') || '{}');
+  monPanier:Produit[] = JSON.parse(localStorage.getItem('monPanier') || '{}');
   prixTotal: number = 0;
   prixCalc:number=0;
   monSolde: number= 0;
@@ -21,20 +21,23 @@ export class PanierComponent implements OnInit {
   isResume:boolean=false
   prixLivraison:number=0
   prixAvecLivraison: number= 0
+  vide:string=''
 
   constructor(private livraisonService: LivraisonService,
     private router:Router) { }
 
   ngOnInit(): void {
     this.total();
+
  //   console.log(this.prixTotal)
   }
 total(){
-  for (let p of this.monPanier)
+    for (let p of this.monPanier)
   {
-    this.prixCalc += p.prix;
+    this.prixCalc += Number(p.prix);
   }
  return this.prixTotal= this.prixCalc
+
 }
 
 livraison(){

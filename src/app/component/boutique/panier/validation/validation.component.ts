@@ -92,6 +92,6 @@ export class ValidationComponent implements OnInit {
     }
   }
   goList() {
-    this.router.navigateByUrl('/profil');
+    this.router.navigateByUrl('/panier');
   }
 }
