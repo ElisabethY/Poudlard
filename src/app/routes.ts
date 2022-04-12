@@ -1,3 +1,4 @@
+import { BulletinEditComponent } from './component/cours/bulletin/bulletin-edit/bulletin-edit.component';
 import { BulletinComponent } from './component/cours/bulletin/bulletin.component';
 import { ValidationComponent } from './component/boutique/panier/validation/validation.component';
 import { ProduitDetailComponent } from './component/boutique/produit-detail/produit-detail.component';
@@ -42,6 +43,7 @@ const routes : Routes= [
 {path: 'cours/eleves/:id',component: ListeElevesComponent},
 
 {path: 'eleves/bulletin/:id',component: BulletinComponent},
+{path: 'eleves/bulletin/edit/:id',component: BulletinEditComponent},
 
 {path: 'maison',component: MaisonComponent },
 {path: 'maison/edit/:id',component: MaisonEditComponent },
