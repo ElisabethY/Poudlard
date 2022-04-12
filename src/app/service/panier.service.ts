@@ -34,7 +34,6 @@ export class PanierService {
   private panierToJson(panier: Panier): any {
     let obj = {
       id: panier.id,
-      quantite: panier.quantite,
       achat: panier.achat,
       dateAchat :panier.dateAchat,
       compte: panier.compte,

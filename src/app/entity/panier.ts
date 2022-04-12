@@ -4,7 +4,6 @@ export class Panier {
 
   public constructor(
     private _id?: number|undefined ,
-    private _quantite?: number| undefined,
     private _achat?: boolean| undefined,
     private _dateAchat?: Date| undefined,
     private _compte?: Compte| undefined,
@@ -19,13 +18,6 @@ export class Panier {
     this._id = value;
   }
 
-  public get quantite(): number | undefined{
-    return this._quantite;
-  }
-
-  public set quantite(value: number| undefined) {
-    this._quantite = value;
-  }
   public get achat(): boolean | undefined{
     return this._achat;
   }

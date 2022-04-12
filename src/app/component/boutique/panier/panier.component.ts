@@ -1,3 +1,4 @@
+import { Produit } from './../../../entity/produit';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./panier.component.css']
 })
 export class PanierComponent implements OnInit {
-
+  articles : Produit[]=[]
+  
   constructor() { }
 
   ngOnInit(): void {

@@ -1,7 +1,6 @@
-import { ActivatedRoute } from '@angular/router';
 import { AuthService } from './../../../service/auth.service';
 import { CoursService } from './../../../service/cours.service';
-import { Maison } from './../../../entity/maison';
+
 
 import { Cours } from './../../../entity/cours';
 import { Component, OnInit } from '@angular/core';
