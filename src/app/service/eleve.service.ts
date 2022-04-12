@@ -4,11 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EleveService {
-
-
   private static URL: string = 'http://localhost:8080/poudlard/api/eleve';
 
   constructor(private http: HttpClient) {}
@@ -25,12 +23,19 @@ export class EleveService {
     return this.http.get<any>(`${EleveService.URL}/${id}`);
   }
 
+  public getbyCours(id: number): Observable<any> {
+    return this.http.get<Eleve>(`${EleveService.URL}/listeparcours/${id}`);
+  }
+
   public create(eleve: Eleve): Observable<any> {
     return this.http.post(EleveService.URL, this.EleveToJson(eleve));
   }
 
   public update(eleve: Eleve): Observable<any> {
-    return this.http.put(`${EleveService.URL}/${eleve.id}`, this.EleveToJson(eleve));
+    return this.http.put(
+      `${EleveService.URL}/${eleve.id}`,
+      this.EleveToJson(eleve)
+    );
   }
 
   private EleveToJson(eleve: Eleve): any {
@@ -42,8 +47,8 @@ export class EleveService {
       naissance: eleve.naissance,
       maison: eleve.maison,
       password: eleve.password,
-      solde:eleve.solde,
-      type: eleve.type
+      solde: eleve.solde,
+      type: eleve.type,
     };
     return obj;
   }

@@ -7,14 +7,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-liste-eleves',
   templateUrl: './liste-eleves.component.html',
-  styleUrls: ['./liste-eleves.component.css']
+  styleUrls: ['./liste-eleves.component.css'],
 })
 export class ListeElevesComponent implements OnInit {
-  eleves:Eleve[] = [];
+  eleves: Eleve[] = [];
   identifiant: number = 0;
 
   constructor(
-    private eleveService:EleveService,
+    private eleveService: EleveService,
     private activatedRoute: ActivatedRoute,
     private authService: AuthService
   ) {}
@@ -24,20 +24,27 @@ export class ListeElevesComponent implements OnInit {
   }
 
   list() {
-
     this.activatedRoute.params.subscribe((params) => {
       this.identifiant = params['id'];
-      console.log(params)
+      console.log(params);
     });
 
     {
-      this.eleveService.get(this.identifiant).subscribe((result) => {
+      this.eleveService.getbyCours(this.identifiant).subscribe((result) => {
         this.eleves = [];
-
+        console.log(this.eleves);
         for (let p of result) {
           {
             this.eleves.push(
-              new Eleve(p.nom, p.prenom));
+              new Eleve(
+                p.id,
+                p.login,
+                p.nom,
+                p.prenom,
+                p.naissance,
+                p.maison.nom
+              )
+            );
           }
         }
       });
@@ -54,6 +61,6 @@ export class ListeElevesComponent implements OnInit {
   }
 
   get role() {
-     return localStorage.getItem('role');
+    return localStorage.getItem('role');
   }
 }
