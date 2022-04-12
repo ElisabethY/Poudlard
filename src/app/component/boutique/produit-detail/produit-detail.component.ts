@@ -1,10 +1,3 @@
-import { PanierService } from './../../../service/panier.service';
-import { CompteService } from './../../../service/compte.service';
-import { ProfService } from './../../../service/prof.service';
-import { EleveService } from './../../../service/eleve.service';
-import { Prof } from './../../../entity/prof';
-import { Eleve } from './../../../entity/eleve';
-import { Compte } from 'src/app/entity/compte';
 import { ProduitDetailService } from './../../../service/produit-detail.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
@@ -18,15 +11,12 @@ import { Produit } from 'src/app/entity/produit';
 export class ProduitDetailComponent implements OnInit {
   panier: Produit[] = [];
   article: Produit = new Produit();
-  compteE: Compte = new Eleve();
-  compteP: Compte = new Prof();
   message: string = '';
 
   constructor(
     private aR: ActivatedRoute,
     private produitDService: ProduitDetailService,
-    private profService: ProfService,
-    private eleveService: EleveService
+
   ) {}
 
   ngOnInit(): void {
@@ -39,11 +29,13 @@ export class ProduitDetailComponent implements OnInit {
     });
   }
   addPanier() {
+
     let obj = {
       id:  this.article.id,
       libelle: this.article.libelle,
       description: this.article.description,
       prix: this.article.prix,
+      boutique: this.article.boutique?.nom
      }
 
      let objarr = []
@@ -60,10 +52,15 @@ export class ProduitDetailComponent implements OnInit {
       else{
         console.log("EXISTE PAS DANS PANIER ")
         objarr.push(obj)
-        this.panier = objarr;
         this.message='PRODUIT AJOUTE AU PANIER'
-        localStorage.setItem('monPanier', JSON.stringify(objarr) )
-        return console.log( localStorage.getItem('monPanier'))
-        }}
+      }}
+      else {
+         objarr.push(obj)
+        this.message='PRODUIT AJOUTE AU PANIER'
+
+      }
+    
+      localStorage.setItem('monPanier', JSON.stringify(objarr))
+      return  console.log(localStorage.getItem('monPanier'))
 }
 }
