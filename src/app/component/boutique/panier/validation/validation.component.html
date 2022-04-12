@@ -1,0 +1,37 @@
+<h2>Resumé</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Libellé</th>
+      <th>Prix</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let b of monPanier">
+    <tr>
+      <td>{{b.libelle}}</td>
+      <td> {{b.prix}} </td>
+    </tr>
+  </tbody>
+</table>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Livraison</th>
+      <th>Prix</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{livraisonMode}}</td>
+      <td> {{livraisonPrix}} </td>
+    </tr>
+  </tbody>
+</table>
+<div>
+  Total: {{prixTotal}}
+</div>
+<button class="btn btn-outline-primary" (click)="acheter()">Acheter</button>
+
+<span *ngIf="isAchat==true">
+  <div >{{message}}</div>
+</span>

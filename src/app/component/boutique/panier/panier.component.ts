@@ -27,7 +27,7 @@ export class PanierComponent implements OnInit {
 
   ngOnInit(): void {
     this.total();
-    console.log(this.prixTotal)
+ //   console.log(this.prixTotal)
   }
 total(){
   for (let p of this.monPanier)
@@ -46,19 +46,15 @@ this.livraisonService.getAll().subscribe((result)=>{
   }
 })
 return this.isAchat=true;
-// this.monSolde= Number(localStorage.getItem('solde'))
-// if(this.monSolde-this.prixTotal>=0){
-// console.log(this.monSolde-this.prixTotal)
-// this.message= 'Veuillez choisir un mode de livraison'
-// return
-// }
 }
-choixLivraison(prix:any){
-  this.livraisonChoix.prix = prix
+choixLivraison(l:any){
+  this.livraisonChoix.modeLivraion = l.modeLivraion
+  this.livraisonChoix.prix = l.prix
+  localStorage.setItem('livraisonMode', JSON.stringify(this.livraisonChoix.modeLivraion))
+  localStorage.setItem('livraisonPrix', JSON.stringify(this.livraisonChoix.prix))
   this.prixAvecLivraison = this.prixTotal+ Number(this.livraisonChoix.prix)
-  console.log(this.prixTotal)
+  localStorage.setItem('prixTotal', JSON.stringify(this.prixAvecLivraison))
   this.isResume = true;
-
 }
 valider(){
   this.router.navigateByUrl('/panier/validation');

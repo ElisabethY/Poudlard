@@ -31,6 +31,7 @@ import { CoursEditComponent } from './component/cours/cours-edit/cours-edit.comp
 import { ListeElevesComponent } from './component/cours/liste-eleves/liste-eleves.component';
 import { BulletinComponent } from './component/cours/bulletin/bulletin.component';
 import { ProfilComponent } from './component/comptes/profil/profil.component';
+import { ValidationComponent } from './component/boutique/panier/validation/validation.component';
 // import { FromTemplateComponent } from './component/formulaire/from-template/from-template.component';
 // import { FormCodeComponent } from './component/formulaire/form-code/form-code.component';
 
@@ -59,6 +60,7 @@ import { ProfilComponent } from './component/comptes/profil/profil.component';
     ListeElevesComponent,
     BulletinComponent,
     ProfilComponent,
+    ValidationComponent,
     // FromTemplateComponent,
     // FormCodeComponent,
 

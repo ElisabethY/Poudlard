@@ -1,3 +1,4 @@
+import { ValidationComponent } from './component/boutique/panier/validation/validation.component';
 import { ProduitDetailComponent } from './component/boutique/produit-detail/produit-detail.component';
 import { ProfilComponent } from './component/comptes/profil/profil.component';
 import { MenuComponent } from './component/menu/menu.component';
@@ -52,6 +53,7 @@ const routes : Routes= [
 {path: 'compte/eleves/edit/:id',component: EleveEditComponent},
 
 {path: 'panier',component: PanierComponent},
+{path: 'panier/validation',component: ValidationComponent},
 
 {path: 'boutique',component: BoutiqueListComponent},
 {path: 'boutique/produits/:id',component: ProduitListComponent},

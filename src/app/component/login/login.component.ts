@@ -46,13 +46,15 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('nom', jsonObject.nom);
         localStorage.setItem('naissance', jsonObject.naissance);
         localStorage.setItem('solde', jsonObject.solde);
-        localStorage.setItem('maison', jsonObject.maison.nom);
-        localStorage.setItem('score', jsonObject.maison.score);
+        // localStorage.setItem('maison', jsonObject.maison.nom);
+        // localStorage.setItem('maisonId', jsonObject.maison.id);
+        // localStorage.setItem('score', jsonObject.maison.score);
+        // localStorage.setItem('laMaison', jsonObject.maison);
         localStorage.setItem('naissance', jsonObject.naissance);
 
         this.erreur = false;
         this.router.navigateByUrl('/evenement');
-        
+
       },
       error: (error: any) => {
         console.log(error);

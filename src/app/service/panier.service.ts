@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class PanierService {
-  private static URL: string = 'http://localhost:8080/poudlard/api/panier';
+  private static URL: string = 'http://localhost:8080/poudlard/api/historique';
 
   constructor(private http: HttpClient) {}
 
