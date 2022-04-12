@@ -39,20 +39,31 @@ export class ProduitDetailComponent implements OnInit {
     });
   }
   addPanier() {
+    let obj = {
+      id:  this.article.id,
+      libelle: this.article.libelle,
+      description: this.article.description,
+      prix: this.article.prix,
+     }
 
-      this.panier.push(
-        new Produit(
-          this.article.id,
-          this.article.libelle,
-          this.article.description,
-          this.article.prix,
-          this.article.boutique
-        )
-      );
-      localStorage.setItem('monPanier', (JSON.stringify(this.panier)) )
-     console.log( localStorage.getItem('monPanier'))
-  
+     let objarr = []
 
+    if(localStorage.getItem('monPanier')){
 
-  }
+      objarr = JSON.parse(localStorage.getItem('monPanier') || '{}');
+
+      if (objarr.find((i:any) => i.id == this.article.id))
+      {
+        console.log("EXISTE DEJA DANS LE PANIER")
+        return this.message='ITEM DEJA PRESENT DANS LE PANIER'
+      }
+      else{
+        console.log("EXISTE PAS DANS PANIER ")
+        objarr.push(obj)
+        this.panier = objarr;
+        this.message='PRODUIT AJOUTE AU PANIER'
+        localStorage.setItem('monPanier', JSON.stringify(objarr) )
+        return console.log( localStorage.getItem('monPanier'))
+        }}
+}
 }
