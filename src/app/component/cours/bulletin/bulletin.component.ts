@@ -35,7 +35,7 @@ export class BulletinComponent implements OnInit {
         for (let p of result) {
           {
             this.bulletins.push(
-              new Bulletin(p.id, p.cours, p.note, p.commentaire));
+              new Bulletin(p.id, p.cours.intitule, p.note, p.commentaire));
           }
         }
       });
