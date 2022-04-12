@@ -11,8 +11,9 @@
     <td>{{ e.prenom }}</td>
     <td>{{ e.naissance }}</td>
     <td>{{ e.maison }}</td>
+    <td> <button [routerLink]="['/eleves', 'bulletin', e.id]" class="btn btn-outline-primary">Bulletin</button>
+    </td>
   </tr>
-  <tr>
-    <button [routerLink]="['/eleve', 'bulletin', 'e.id']"></button>
-  </tr>
+
+
 </table>
