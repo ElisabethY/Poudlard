@@ -1,4 +1,4 @@
-<table  class="table">
+<table class="table">
   <thead>
     <tr>
       <th>Boutique</th>
@@ -6,7 +6,7 @@
       <th>Prix</th>
     </tr>
   </thead>
-  <tbody  *ngFor="let b of monPanier">
+  <tbody *ngFor="let b of monPanier">
     <tr>
       <td>{{b.boutique}}</td>
       <td>{{b.libelle}}</td>
@@ -15,5 +15,41 @@
   </tbody>
 </table>
 <div>
-Total: {{prixTotal}}
+  Total: {{prixTotal}}
 </div>
+<button class="btn btn-outline-primary" (click)="livraison()">Acheter</button>
+
+<span *ngIf="isAchat==true">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Mode de livraison</th>
+        <th>Delais</th>
+        <th>Prix</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let l of livraisons">
+      <tr>
+        <td>{{l.id}}</td>
+        <td>{{l.modeLivraion}}</td>
+        <td>{{l.description}}</td>
+        <td>{{l.prix}} £ </td>
+        <td>
+          <button class="btn btn-outline-primary" (click)="choixLivraison(l.prix)">Ajouter</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</span>
+
+<span *ngIf="isResume==true">
+  <div>
+    Total: {{prixAvecLivraison}}
+  </div>
+  <div>
+    <button class="btn btn-outline-primary" (click)="valider()">Valider</button>
+  </div>
+
+</span>

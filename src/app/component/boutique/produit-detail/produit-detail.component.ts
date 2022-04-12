@@ -16,6 +16,7 @@ export class ProduitDetailComponent implements OnInit {
   constructor(
     private aR: ActivatedRoute,
     private produitDService: ProduitDetailService,
+    private route:Router
 
   ) {}
 
@@ -59,7 +60,7 @@ export class ProduitDetailComponent implements OnInit {
         this.message='PRODUIT AJOUTE AU PANIER'
 
       }
-    
+
       localStorage.setItem('monPanier', JSON.stringify(objarr))
       return  console.log(localStorage.getItem('monPanier'))
 }

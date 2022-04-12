@@ -20,5 +20,9 @@ export class MenuComponent implements OnInit {
   get role() {
      return localStorage.getItem('role');
   }
+  get solde() {
+    return localStorage.getItem('solde');
+ }
+
 
 }
