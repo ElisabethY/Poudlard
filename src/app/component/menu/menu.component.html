@@ -8,9 +8,11 @@
 <a routerLink="/compte" routerLinkActive="active" class="btn btn-link"> comptes </a>
 </span>
 <span *ngIf="isAuthenticated()">
+
   <a routerLink="/profil" routerLinkActive="active" class="btn btn-link"> profil </a>
 <a routerLink="/cours" routerLinkActive="active" class="btn btn-link"> cours </a>
 <a routerLink="/boutique" routerLinkActive="active" class="btn btn-link"> boutique </a>
+<a routerLink="/panier" routerLinkActive="active" class="btn btn-outline-primary">Panier</a>
 </span>
 
 <router-outlet></router-outlet>

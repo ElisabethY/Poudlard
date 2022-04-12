@@ -8,7 +8,6 @@
       <td>
         <a [routerLink]="['/cours', 'eleves',(c.id)]" routerLinkActive="active" class="btn btn-outline-primary">Liste
           des eleves</a>
-
       </td>
     </span>
     <span *ngIf="isAuthenticated() && role=='admin' ">

@@ -51,6 +51,8 @@ const routes : Routes= [
 {path: 'compte/eleves',component: EleveComponent},
 {path: 'compte/eleves/edit/:id',component: EleveEditComponent},
 
+{path: 'panier',component: PanierComponent},
+
 {path: 'boutique',component: BoutiqueListComponent},
 {path: 'boutique/produits/:id',component: ProduitListComponent},
 {path: 'panier/compte/:id',component: PanierComponent},

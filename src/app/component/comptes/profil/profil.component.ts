@@ -1,6 +1,5 @@
 import { Prof } from './../../../entity/prof';
 import { Eleve } from './../../../entity/eleve';
-import { CompteService } from './../../../service/compte.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from './../../../service/auth.service';
 import { Component, OnInit } from '@angular/core';

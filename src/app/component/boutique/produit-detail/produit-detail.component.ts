@@ -1,7 +1,13 @@
+import { PanierService } from './../../../service/panier.service';
+import { CompteService } from './../../../service/compte.service';
+import { ProfService } from './../../../service/prof.service';
+import { EleveService } from './../../../service/eleve.service';
+import { Prof } from './../../../entity/prof';
+import { Eleve } from './../../../entity/eleve';
+import { Compte } from 'src/app/entity/compte';
 import { ProduitDetailService } from './../../../service/produit-detail.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Panier } from 'src/app/entity/panier';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Produit } from 'src/app/entity/produit';
 
 @Component({
@@ -10,12 +16,17 @@ import { Produit } from 'src/app/entity/produit';
   styleUrls: ['./produit-detail.component.css'],
 })
 export class ProduitDetailComponent implements OnInit {
+  panier: Produit[] = [];
   article: Produit = new Produit();
-  click: number = 0;
-  panier: Panier = new Panier();
+  compteE: Compte = new Eleve();
+  compteP: Compte = new Prof();
+  message: string = '';
+
   constructor(
     private aR: ActivatedRoute,
-    private produitDService: ProduitDetailService
+    private produitDService: ProduitDetailService,
+    private profService: ProfService,
+    private eleveService: EleveService
   ) {}
 
   ngOnInit(): void {
@@ -23,17 +34,25 @@ export class ProduitDetailComponent implements OnInit {
       if (params['id']) {
         this.produitDService.get(params['id']).subscribe((result) => {
           this.article = result;
-          console.log(result)
-
         });
       }
     });
   }
   addPanier() {
-    this.click++;
-    this.panier.quantite = this.click;
-    console.log(this.panier.quantite);
 
-    console.log(this.article.id);
+      this.panier.push(
+        new Produit(
+          this.article.id,
+          this.article.libelle,
+          this.article.description,
+          this.article.prix,
+          this.article.boutique
+        )
+      );
+      localStorage.setItem('monPanier', (JSON.stringify(this.panier)) )
+     console.log( localStorage.getItem('monPanier'))
+  
+
+
   }
 }
