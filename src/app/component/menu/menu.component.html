@@ -1,32 +1,20 @@
 
+
+<a routerLink="/evenement" routerLinkActive="active" class="btn btn-link"> evenements </a>
+<a routerLink="/maison" routerLinkActive="active" class="btn btn-link"> maisons </a>
+
+
+<span *ngIf="isAuthenticated() && role=='admin' ">
+<a routerLink="/compte" routerLinkActive="active" class="btn btn-link"> comptes </a>
+</span>
 <span *ngIf="isAuthenticated()">
 
+  <a routerLink="/profil" routerLinkActive="active" class="btn btn-link"> profil </a>
+<a routerLink="/cours" routerLinkActive="active" class="btn btn-link"> cours </a>
+<a routerLink="/boutique" routerLinkActive="active" class="btn btn-link"> boutique </a>
+<a routerLink="/panier" routerLinkActive="active" class="btn btn-outline-primary">Panier</a>
 
+SOLDE: {{solde}} £
+</span>
 
-  <span *ngIf="role=='admin' ">
-  <a routerLink="/compte" routerLinkActive="active" class="btn btn-link"> comptes </a>
-  
-  </span>
-  <span *ngIf="role=='prof'">
-    <a routerLink="/cours" routerLinkActive="active" class="btn btn-link"> cours </a>
-    <a routerLink="/maison" routerLinkActive="active" class="btn btn-link"> maisons </a>
-    <a routerLink="/profil" routerLinkActive="active" class="btn btn-link"> profil </a>
-    <a routerLink="/panier" routerLinkActive="active" class="btn btn-outline-primary">Panier</a>
-  </span>
-  
-  <span *ngIf="role=='eleve'">
-    <a routerLink="/bulletin" routerLinkActive="active" class="btn btn-link"> bulletin </a>
-    <a routerLink="/maison" routerLinkActive="active" class="btn btn-link"> maisons </a>
-    <a routerLink="/profil" routerLinkActive="active" class="btn btn-link"> profil </a>
-    <a routerLink="/panier" routerLinkActive="active" class="btn btn-outline-primary">Panier</a>
-  </span>
-  <a routerLink="/evenement" routerLinkActive="active" class="btn btn-link"> evenements </a>
-  
-  
-  <a routerLink="/boutique" routerLinkActive="active" class="btn btn-link"> boutique </a>
-  
-  <div>SOLDE: {{solde}} £</div>
-  </span>
-  
-  
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>
