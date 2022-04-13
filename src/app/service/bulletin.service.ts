@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class BulletinService {
 
-  private static URL: string = 'http://localhost:8080/poudlard/api/bulletin';
+  private static URL: string = 'http://localhost:8080/poudlard/api/bulletin/eleve';
 
   constructor(private http: HttpClient) {}
 
@@ -24,13 +24,13 @@ export class BulletinService {
     return this.http.get<any>(`${BulletinService.URL}/${id}`);
   }
 
-  public create(bulletin : Bulletin): Observable<any> {
-    return this.http.post(BulletinService.URL, this.BulletinToJson(bulletin));
-  }
+  // public create(bulletin : Bulletin): Observable<any> {
+  //   return this.http.post(BulletinService.URL, this.BulletinToJson(bulletin));
+  // }
 
-  public update(bulletin: Bulletin): Observable<any> {
-    return this.http.put(`${BulletinService.URL}/${bulletin.id}`, this.BulletinToJson(bulletin));
-  }
+  // public update(bulletin: Bulletin): Observable<any> {
+  //   return this.http.put(`${BulletinService.URL}/${bulletin.id}`, this.BulletinToJson(bulletin));
+  // }
 
   private BulletinToJson(bulletin: Bulletin): any {
     let obj = {

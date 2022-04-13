@@ -34,7 +34,6 @@ export class CoursListeComponent implements OnInit {
         console.log(c.professeur?.id) //undefined x9
         if (c.professeur?.id == Number(localStorage.getItem('id')))
         {
-
           this.cours.push(
             new Cours(c.id, c.intitule, c.professeur.nom)
           )
