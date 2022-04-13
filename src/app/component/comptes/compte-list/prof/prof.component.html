@@ -13,28 +13,18 @@
     <td>Nom Prenom</td>
     <td>Date de naissance</td>
     <td>Maison</td>
+    <td>Cours</td>
   </tr>
-  <tr *ngFor="let e of profs">
+  <tr *ngFor="let e of profs" >
     <td>{{ e.id }}</td>
     <td>{{ e.login }}</td>
     <td>{{ e.nom }} {{ e.prenom }}</td>
     <td>{{ e.naissance  | date: "dd/MM/yyyy"}}</td>
     <td>{{(getMaison(e)!.nom)}}</td>
-    <td>
-      <a
-        [routerLink]="['/compte', 'professeurs','edit', e.id]"
-        routerLinkActive="active"
-        class="btn btn-outline-primary"
-        >editer</a>
-    </td>
-    <td>
-      <button class="btn btn-outline-danger" (click)="delete(e.id!)">
-        supprimer
-      </button>
-    </td>
-  </tr>
+   
+     </tr>
 </table>
-<a routerLink="/compte/add" routerLinkActive="active" class="btn btn-link"
+<a routerLink="/compte/professeurs/add" routerLinkActive="active" class="btn btn-link"
   >Creer</a
 >
 

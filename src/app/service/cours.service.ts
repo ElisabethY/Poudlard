@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 export class CoursService {
 
   private static URL: string = 'http://localhost:8080/poudlard/api/cours';
-  
+  private static CREATE: string = 'http://localhost:8080/poudlard/api/cours/create';
 
   constructor(private http: HttpClient) {}
 
@@ -26,7 +26,8 @@ export class CoursService {
   }
 
   public create(cours: Cours): Observable<any> {
-    return this.http.post(CoursService.URL, this.CoursToJson(cours));
+    console.log(cours)
+    return this.http.post(CoursService.CREATE, this.CoursToJson(cours));
   }
 
   public update(cours: Cours): Observable<any> {
@@ -37,7 +38,7 @@ export class CoursService {
     let obj = {
       id: cours.id,
       intitule: cours.intitule,
-      professeur: cours.professeur,
+      professeur: {id: cours.professeur?.id, type:'prof'}
     };
     return obj;
   }

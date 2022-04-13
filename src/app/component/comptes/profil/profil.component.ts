@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import { Compte } from 'src/app/entity/compte';
 import { ProfService } from 'src/app/service/prof.service';
 import { EleveService } from 'src/app/service/eleve.service';
+import { CompteService } from 'src/app/service/compte.service';
 
 @Component({
   selector: 'app-profil',
@@ -25,17 +26,18 @@ export class ProfilComponent implements OnInit {
   isOK: boolean = false;
   soldeNew: number = 0;
   monSolde: number = 0;
-  suc: boolean = false
-  isTransaction: boolean= false
-  msg:string='';
-  maisonUpdate:Maison=new Maison()
-  
+  suc: boolean = false;
+  isTransaction: boolean = false;
+  msg: string = '';
+  maisonUpdate: Maison = new Maison();
+
   constructor(
     private authService: AuthService,
     private aR: ActivatedRoute,
     private profService: ProfService,
     private eleveService: EleveService,
     private maisonService: MaisonService,
+    private compteService: CompteService,
     private router: Router
   ) {}
 
@@ -45,7 +47,7 @@ export class ProfilComponent implements OnInit {
         this.erreur = true;
         this.message = 'Identifiants non reconnus';
       }
-    }) 
+    });
   }
   check() {
     if (this.logins == localStorage.getItem('login')) {
@@ -62,44 +64,45 @@ export class ProfilComponent implements OnInit {
   }
 
   recharge() {
-//     this.monSolde = Number(localStorage.getItem('solde'))
-
-//     if(this.soldeNew !=0){  
-//        this.monSolde += this.soldeNew;
-
-//        localStorage.setItem('solde', JSON.stringify(this.monSolde))
-//        if (localStorage.getItem('role') == 'prof') {
-//           this.profService.get(Number(localStorage.getItem('id'))).subscribe((compteP)=>{
-//           this.comptes= compteP })
-         
-//           this.profService.update(this.comptes).subscribe(() => {
-//            this.goList();
-//           })}
-
-//         if (localStorage.getItem('role') == 'eleve') {
-//            this.profService.get(Number(localStorage.getItem('id')).subscribe((compteP)=>{
-//            this.compte= compteP
-//            this.compte.solde = this.monSolde
-//          this.eleveService.update(this.compte).subscribe(() => {
-//          this.goList()
-//         }
-//         )}))}
-// },
-//     else{
-//       this.isEdition = false;
-//       this.isOK = false;
-//       this.isTransaction = true;
-//      return  this.msg='Solde Inchangé';}
-  
-}
+    this.monSolde = Number(localStorage.getItem('solde'));
+    if (this.soldeNew != 0) {
+      this.monSolde += this.soldeNew;
+      localStorage.setItem('solde', JSON.stringify(this.monSolde));
+      if (localStorage.getItem('role') == 'prof') {
+        this.profService
+          .get(Number(localStorage.getItem('id')))
+          .subscribe((compteP) => {
+            this.comptes = compteP;
+          });
+        this.profService.update(this.comptes).subscribe(() => {
+          this.goList();
+        });
+      }
+      if (localStorage.getItem('role') == 'eleve') {
+        this.profService
+          .get(Number(localStorage.getItem('id')))
+          .subscribe((compteP) => {
+            this.compte = compteP;
+          });
+        this.eleveService.update(this.compte).subscribe(() => {
+          this.goList();
+        });
+      } else {
+        this.isEdition = false;
+        this.isOK = false;
+        this.isTransaction = true;
+        this.msg = 'Solde Inchangé';
+      }
+    }
+  }
 
   goList() {
     this.router.navigateByUrl('/profil');
     this.isEdition = false;
-    this.isOK = false
-    this.isTransaction = true
-    this.msg='Recharge Validée. Nouveau Solde : '+this.monSolde;
-    console.log(this.compte)
+    this.isOK = false;
+    this.isTransaction = true;
+    this.msg = 'Recharge Validée. Nouveau Solde : ' + this.monSolde;
+    console.log(this.compte);
   }
   isAuthenticated() {
     return this.authService.isAuthenticated();

@@ -4,11 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProfService {
-
   private static URL: string = 'http://localhost:8080/poudlard/api/prof';
+  private static CREATE: string = 'http://localhost:8080/poudlard/api/prof/add';
 
   constructor(private http: HttpClient) {}
 
@@ -25,12 +25,15 @@ export class ProfService {
   }
 
   public create(prof: Prof): Observable<any> {
-    return this.http.post(ProfService.URL, this.profToJson(prof));
+    console.log(prof)
+    return this.http.post(ProfService.CREATE, this.profToJson(prof));
   }
 
   public update(prof: Prof): Observable<any> {
-    console.log( '__________________')
-    return this.http.put(`${ProfService.URL}/${prof.id}`, this.profToJson(prof));
+    return this.http.put(
+      `${ProfService.URL}/${prof.id}`,
+      this.profToJson(prof)
+    );
   }
 
   private profToJson(prof: Prof): any {
@@ -40,10 +43,10 @@ export class ProfService {
       nom: prof.nom,
       prenom: prof.prenom,
       naissance: prof.naissance,
-      maison: {id: prof.maison?.id},
+      maison: { id: prof.maison?.id },
       password: prof.password,
-      solde:prof.solde,
-      type: 'prof'
+      solde: prof.solde,
+      type: 'prof',
     };
     return obj;
   }

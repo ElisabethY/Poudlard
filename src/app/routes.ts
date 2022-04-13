@@ -53,6 +53,7 @@ const routes : Routes= [
 {path: 'compte',component: CompteListComponent},
 {path: 'compte/professeurs',component: ProfComponent},
 {path: 'compte/professeurs/edit/:id',component: ProfEditComponent},
+{path: 'compte/professeurs/add',component: ProfEditComponent},
 {path: 'compte/eleves',component: EleveComponent},
 {path: 'compte/eleves/edit/:id',component: EleveEditComponent},
 

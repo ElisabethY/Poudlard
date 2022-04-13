@@ -19,6 +19,7 @@ event: Evenement= new Evenement();
 
   ngOnInit(): void {
     this.aR.params.subscribe((params)=>{
+      console.log(params)
       if(params['id']){
        this.eventService.get(params['id']).subscribe((result)=>{
         this.event=result;
