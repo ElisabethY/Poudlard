@@ -40,7 +40,7 @@ const routes : Routes= [
 
 {path: 'cours',component: CoursListeComponent},
 {path: 'cours/edit/:id',component: CoursEditComponent},
-{path: 'cours/eleves/:id',component: ListeElevesComponent},
+{path: 'eleve/cours/:id',component: ListeElevesComponent},
 
 {path: 'eleves/bulletin/:id',component: BulletinComponent},
 {path: 'bulletin/edit/:id',component: BulletinEditComponent},
