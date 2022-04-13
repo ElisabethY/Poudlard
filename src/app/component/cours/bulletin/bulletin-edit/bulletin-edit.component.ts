@@ -1,3 +1,4 @@
+import { BulletinService } from './../../../../service/bulletin.service';
 import { EleveService } from 'src/app/service/eleve.service';
 import { Eleve } from './../../../../entity/eleve';
 import { BulletinEditService } from './../../../../service/bulletin-edit.service';
@@ -17,13 +18,14 @@ export class BulletinEditComponent implements OnInit {
 
   constructor (private aR:ActivatedRoute,
     private bService: BulletinEditService,
+    private bulletinervice: BulletinService,
     private eleveService :EleveService,
     private router: Router) {}
 
   ngOnInit(): void {
     this.aR.params.subscribe((params)=>{
       if(params['id']){
-       this.bService.get(params['id']).subscribe((result)=>{
+       this.bulletinervice.get(params['id']).subscribe((result)=>{
         this.bulletin=result;
        })
       }
