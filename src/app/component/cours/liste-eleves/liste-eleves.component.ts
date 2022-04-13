@@ -32,7 +32,7 @@ export class ListeElevesComponent implements OnInit {
     {
       this.eleveService.getbyCours(this.identifiant).subscribe((result) => {
         this.eleves = [];
-    
+
         for (let p of result) {
           {
             this.eleves.push(

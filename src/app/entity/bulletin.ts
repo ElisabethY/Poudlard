@@ -1,10 +1,12 @@
+import { Eleve } from './eleve';
 import { Cours } from './cours';
 export class Bulletin {
   public constructor(
     private _id?: number | undefined,
     private _cours?: Cours | undefined,
     private _note?: number | undefined,
-    private _commentaire?: string | undefined
+    private _commentaire?: string | undefined,
+    private _eleve?:Eleve| undefined
   ) {}
 
   public get id(): number | undefined {
@@ -37,5 +39,12 @@ export class Bulletin {
 
   public set commentaire(value: string | undefined) {
     this._commentaire = value;
+  }
+  public get eleve(): Eleve | undefined {
+    return this._eleve;
+  }
+
+  public set eleve(value: Eleve | undefined) {
+    this._eleve = value;
   }
 }
