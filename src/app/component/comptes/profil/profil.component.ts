@@ -40,12 +40,20 @@ export class ProfilComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.aR.params.subscribe((params)=>{
+      if(params['id']){
+       this.profService.get(params['id']).subscribe((result)=>{
+        this.comptes=result;
+       })
+      }
+    });
     this.aR.queryParams.subscribe((params) => {
       if (params['auth']) {
         this.erreur = true;
         this.message = 'Identifiants non reconnus';
       }
     });
+    
   }
   check() {
     if (this.logins == localStorage.getItem('login')) {
@@ -63,23 +71,16 @@ export class ProfilComponent implements OnInit {
   }
 
   recharge() {
+
+
     this.monSolde = Number(localStorage.getItem('solde'));
+
     if(this.soldeNew !=0){
     this.monSolde += this.soldeNew;
     if (localStorage.getItem('role') == 'prof') {
-      this.comptes.type = localStorage.getItem('role')!
-      this.comptes.solde = this.monSolde
-      this.comptes.id = Number(localStorage.getItem('id'))
-      this.comptes.nom = localStorage.getItem('nom')!
-      this.comptes.prenom = localStorage.getItem('prenom')!
-      this.comptes.naissance = new Date(localStorage.getItem('naissance')!)
-      this.comptes.password = localStorage.getItem('password')
-      this.comptes.login =  localStorage.getItem('login')!
-      // this.maisonUpdate.id= Number(localStorage.getItem('maisonId')!)
-      // this.maisonUpdate.nom= localStorage.getItem('maison')!
-      // this.maisonUpdate.score= Number(localStorage.getItem('score')!)
-      // this.comptes.maison= <Maison>this.maisonUpdate
-    
+      this.profService.get(localStorage.getItem('id')).subscribe((compteP)=>{
+
+      })
       localStorage.setItem('solde', JSON.stringify(this.monSolde))
       this.profService.update(this.comptes).subscribe(() => {
         this.goList();
@@ -88,12 +89,12 @@ export class ProfilComponent implements OnInit {
     if (localStorage.getItem('role') == 'eleve') {
       this.compte.type = localStorage.getItem('role')!
       this.compte.solde = this.monSolde
-      this.compte.id = Number(localStorage.getItem('id'))
-      this.compte.nom = localStorage.getItem('nom')!
-      this.compte.prenom = localStorage.getItem('prenom')!
-      this.compte.naissance = new Date(localStorage.getItem('naissance')!)
-      this.compte.password = localStorage.getItem('password')
-      this.compte.login =  localStorage.getItem('login')!
+      // this.compte.id = Number(localStorage.getItem('id'))
+      // this.compte.nom = localStorage.getItem('nom')!
+      // this.compte.prenom = localStorage.getItem('prenom')!
+      // this.compte.naissance = new Date(localStorage.getItem('naissance')!)
+      // this.compte.password = localStorage.getItem('password')
+      // this.compte.login =  localStorage.getItem('login')!
       // this.maisonUpdate.id = Number(localStorage.getItem('maisonId')!)
       // this.maisonUpdate.nom= localStorage.getItem('maison')!
       // this.maisonUpdate.score= Number(localStorage.getItem('score')!)

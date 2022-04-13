@@ -7,26 +7,25 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-boutique-edit',
   templateUrl: './boutique-edit.component.html',
-  styleUrls: ['./boutique-edit.component.css']
+  styleUrls: ['./boutique-edit.component.css'],
 })
 export class BoutiqueEditComponent implements OnInit {
   boutique: Boutique = new Boutique();
-  categorie =Categorie;
-  enumKey:[]=[]
-  
+  categorie = Categorie;
+  enumKey: [] = [];
 
   constructor(
     private aR: ActivatedRoute,
     private boutiqueService: BoutiqueService,
     private router: Router
-
   ) {}
-//test
+  //test
   ngOnInit(): void {
     this.aR.params.subscribe((params) => {
       if (params['id']) {
         this.boutiqueService.get(params['id']).subscribe((result) => {
           this.boutique = result;
+          console.log(this.categorie);
         });
       }
     });

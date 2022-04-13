@@ -33,6 +33,7 @@ export class EleveService {
   }
 
   public update(eleve: Eleve): Observable<any> {
+    console.log(eleve)
     return this.http.put(
       `${EleveService.PUT}/${eleve.id}`,
       this.EleveToJson(eleve)
@@ -46,10 +47,10 @@ export class EleveService {
       nom: eleve.nom,
       prenom: eleve.prenom,
       naissance: eleve.naissance,
-      maison: eleve.maison,
       password: eleve.password,
       solde: eleve.solde,
-      type: eleve.type,
+      type: 'eleve', 
+      maison: {id: eleve.maison?.id}
     };
     return obj;
   }
