@@ -29,6 +29,7 @@ export class ProfService {
   }
 
   public update(prof: Prof): Observable<any> {
+    console.log( '__________________')
     return this.http.put(`${ProfService.URL}/${prof.id}`, this.profToJson(prof));
   }
 
@@ -39,10 +40,10 @@ export class ProfService {
       nom: prof.nom,
       prenom: prof.prenom,
       naissance: prof.naissance,
-      maison: prof.maison,
+      maison: {id: prof.maison?.id},
       password: prof.password,
       solde:prof.solde,
-      type: prof.type
+      type: 'prof'
     };
     return obj;
   }
