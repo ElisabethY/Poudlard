@@ -8,10 +8,10 @@
 </div>
 <div>
   <label>Password</label>
-<input type="text" class="form-control" [(ngModel)]="password"/>
+<input type="text" class="form-control" [(ngModel)]="password" (keyup.enter)="check()"/>
 </div>
 <div>
-  <button (click)="check()" class="btn btn-outline-success">
+  <button (click)="check()" class="btn btn-outline-success" >
     connexion
   </button>
   <!-- pour les visiteurs -->

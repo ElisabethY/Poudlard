@@ -24,10 +24,15 @@ export class MenuComponent implements OnInit {
 
     return localStorage.getItem('solde');
  }
-bulletin(){
-  
+ get nom() {
+  return localStorage.getItem('nom');
 }
+get prenom() {
+  return localStorage.getItem('prenom');
 }
+
+}
+
 
 
 
