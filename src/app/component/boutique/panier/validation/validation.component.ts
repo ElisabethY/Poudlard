@@ -57,6 +57,7 @@ export class ValidationComponent implements OnInit {
         // this.maison.id = Number(localStorage.getItem('maisonId'))
         // this.maison.score = Number(localStorage.getItem('score'))
         // this.compteP.maison = this.maison
+        (localStorage.setItem('solde', JSON.stringify(this.monSolde)))
         this.profService.update(this.compteP).subscribe(() => {
           this.goList();
         });

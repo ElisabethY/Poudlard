@@ -11,23 +11,7 @@
       <td>{{ m.id }}</td>
       <td>{{ m.nom }}</td>
       <td>{{ m.score}}</td>
-
-      <span *ngIf="isAuthenticated() && role=='admin'">
-    <tr>
-      <td>
-        <a [routerLink]="['/maison', 'edit', m.id]" routerLinkActive="active" class="btn btn-outline-primary">editer</a>
-      </td>
-      <td>
-        <button class="btn btn-outline-danger" (click)="delete(m.id!)">
-          supprimer
-        </button>
-      </td>
-      </span>
     </tr>
 
   </tbody>
 </table>
-
-<span *ngIf="isAuthenticated() && role=='admin'">
-  <button routerLink="/maison/add" routerLinkActive="active" class="btn btn-outline-success">ajouter une maison</button>
-</span>

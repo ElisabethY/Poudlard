@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class MaisonComponent implements OnInit {
   maisons: Maison[]=[];
   ajouter:number=0;
+  scoreNow= localStorage.getItem('score')
   // house: Maison = new Maison;
 
   constructor(private maisonService: MaisonService
@@ -21,6 +22,7 @@ export class MaisonComponent implements OnInit {
 
   ngOnInit(): void {
     this.list();
+    localStorage.setItem('score', JSON.stringify(this.scoreNow))
   }
   list() {
     this.maisonService.getAll().subscribe((result) => {
@@ -31,11 +33,7 @@ export class MaisonComponent implements OnInit {
         )
       }
     });}
-  // add(house : Maison, points : number){
-  //     this.house = house;
-  //     this.house.score = this.house.score! + points;
-  //     this.maisonService.update(this.house).subscribe()
-  // }
+  
   delete(id: number) {
     this.maisonService.delete(id).subscribe((ok) => {
       console.log("deleted")

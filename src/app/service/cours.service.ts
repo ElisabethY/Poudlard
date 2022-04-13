@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 export class CoursService {
 
   private static URL: string = 'http://localhost:8080/poudlard/api/cours';
+  
 
   constructor(private http: HttpClient) {}
 

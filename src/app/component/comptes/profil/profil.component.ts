@@ -1,3 +1,5 @@
+import { MaisonService } from './../../../service/maison.service';
+import { Maison } from './../../../entity/maison';
 import { Prof } from './../../../entity/prof';
 import { Eleve } from './../../../entity/eleve';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -24,11 +26,16 @@ export class ProfilComponent implements OnInit {
   soldeNew: number = 0;
   monSolde: number = 0;
   suc: boolean = false
+  isTransaction: boolean= false
+  msg:string='';
+  maisonUpdate:Maison=new Maison()
+  
   constructor(
     private authService: AuthService,
     private aR: ActivatedRoute,
     private profService: ProfService,
     private eleveService: EleveService,
+    private maisonService: MaisonService,
     private router: Router
   ) {}
 
@@ -57,11 +64,8 @@ export class ProfilComponent implements OnInit {
 
   recharge() {
     this.monSolde = Number(localStorage.getItem('solde'));
+    if(this.soldeNew !=0){
     this.monSolde += this.soldeNew;
-
-    console.log(this.monSolde);
-
-
     if (localStorage.getItem('role') == 'prof') {
       this.comptes.type = localStorage.getItem('role')!
       this.comptes.solde = this.monSolde
@@ -71,6 +75,12 @@ export class ProfilComponent implements OnInit {
       this.comptes.naissance = new Date(localStorage.getItem('naissance')!)
       this.comptes.password = localStorage.getItem('password')
       this.comptes.login =  localStorage.getItem('login')!
+      // this.maisonUpdate.id= Number(localStorage.getItem('maisonId')!)
+      // this.maisonUpdate.nom= localStorage.getItem('maison')!
+      // this.maisonUpdate.score= Number(localStorage.getItem('score')!)
+      // this.comptes.maison= <Maison>this.maisonUpdate
+    
+      localStorage.setItem('solde', JSON.stringify(this.monSolde))
       this.profService.update(this.comptes).subscribe(() => {
         this.goList();
       });
@@ -84,13 +94,34 @@ export class ProfilComponent implements OnInit {
       this.compte.naissance = new Date(localStorage.getItem('naissance')!)
       this.compte.password = localStorage.getItem('password')
       this.compte.login =  localStorage.getItem('login')!
+      // this.maisonUpdate.id = Number(localStorage.getItem('maisonId')!)
+      // this.maisonUpdate.nom= localStorage.getItem('maison')!
+      // this.maisonUpdate.score= Number(localStorage.getItem('score')!)
+     
+      // this.maisonService.create(this.maisonUpdate).subscribe(() => {
+      // });
+      // this.compte.maison= this.maisonUpdate
+      // this.compte.maison.id=  this.maisonUpdate.id
+      // this.compte.maison.score=  this.maisonUpdate.score
+      // this.compte.maison.nom=   this.maisonUpdate.nom
+      localStorage.setItem('solde', JSON.stringify(this.monSolde))
       this.eleveService.update(this.compte).subscribe(() => {
         this.goList();
       });
-    }
+    }}
+    else{
+      this.isEdition = false;
+      this.isOK = false
+      this.isTransaction = true
+      this.msg='Solde Inchangé'}
   }
   goList() {
     this.router.navigateByUrl('/profil');
+    this.isEdition = false;
+    this.isOK = false
+    this.isTransaction = true
+    this.msg='Recharge Validée. Nouveau Solde : '+this.monSolde;
+    console.log(this.compte)
   }
   isAuthenticated() {
     return this.authService.isAuthenticated();

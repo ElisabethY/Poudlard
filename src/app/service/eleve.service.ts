@@ -8,7 +8,8 @@ import { Injectable } from '@angular/core';
 })
 export class EleveService {
   private static URL: string = 'http://localhost:8080/poudlard/api/eleve';
-
+  private static PUT: string = 'http://localhost:8080/poudlard/api/eleve/put'
+  private static GET: string = 'http://localhost:8080/poudlard/api/cours/get'
   constructor(private http: HttpClient) {}
 
   public getAll(): Observable<any[]> {
@@ -20,7 +21,7 @@ export class EleveService {
   }
 
   public get(id: number): Observable<any> {
-    return this.http.get<any>(`${EleveService.URL}/${id}`);
+    return this.http.get<any>(`${EleveService.GET}/${id}`);
   }
 
   public getbyCours(id: number): Observable<any> {
@@ -33,7 +34,7 @@ export class EleveService {
 
   public update(eleve: Eleve): Observable<any> {
     return this.http.put(
-      `${EleveService.URL}/${eleve.id}`,
+      `${EleveService.PUT}/${eleve.id}`,
       this.EleveToJson(eleve)
     );
   }

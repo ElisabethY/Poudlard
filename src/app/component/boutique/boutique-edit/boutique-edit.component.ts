@@ -12,11 +12,14 @@ import { Component, OnInit } from '@angular/core';
 export class BoutiqueEditComponent implements OnInit {
   boutique: Boutique = new Boutique();
   categorie =Categorie;
+  enumKey:[]=[]
+  
 
   constructor(
     private aR: ActivatedRoute,
     private boutiqueService: BoutiqueService,
     private router: Router
+
   ) {}
 //test
   ngOnInit(): void {

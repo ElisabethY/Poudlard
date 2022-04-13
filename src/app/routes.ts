@@ -43,7 +43,8 @@ const routes : Routes= [
 {path: 'cours/eleves/:id',component: ListeElevesComponent},
 
 {path: 'eleves/bulletin/:id',component: BulletinComponent},
-{path: 'eleves/bulletin/edit/:id',component: BulletinEditComponent},
+{path: 'bulletin/edit/:id',component: BulletinEditComponent},
+{path: 'bulletin',component: BulletinComponent},
 
 {path: 'maison',component: MaisonComponent },
 {path: 'maison/edit/:id',component: MaisonEditComponent },
@@ -62,8 +63,10 @@ const routes : Routes= [
 {path: 'boutique/produits/:id',component: ProduitListComponent},
 {path: 'panier/compte/:id',component: PanierComponent},
 {path: 'boutique/edit',component: BoutiqueEditComponent},
+{path: 'boutique/edit/:id',component: BoutiqueEditComponent},
 {path: 'boutique/produit/detail/:id',component: ProduitDetailComponent},
 {path: 'boutique/produit/edit/:id',component: ProduitEditComponent},
 
 //{path: 'formulaire/template',component: FromTemplateComponent},
 ]
+

@@ -1,3 +1,4 @@
+import { BulletinEditService } from './../../../service/bulletin-edit.service';
 import { Bulletin } from './../../../entity/bulletin';
 import { BulletinService } from './../../../service/bulletin.service';
 import { ActivatedRoute } from '@angular/router';
@@ -22,11 +23,12 @@ export class BulletinComponent implements OnInit {
   }
 
   list() {
-
+    if (localStorage.getItem('role')=='prof'){ 
+      
     this.activatedRoute.params.subscribe((params) => {
       this.identifiant = params['id'];
+      console.log(params)
     });
-
     {
       this.bulletin.get(this.identifiant).subscribe((result) => {
         this.bulletins = [];
@@ -39,7 +41,26 @@ export class BulletinComponent implements OnInit {
           }
         }
       });
-    }
+    }}
+    if (localStorage.getItem('role')=='eleve'){ 
+      
+    this.activatedRoute.params.subscribe((params) => {
+      this.identifiant= Number(localStorage.getItem('id'))
+      console.log(params)
+    });
+      {
+        this.bulletin.get(this.identifiant).subscribe((result) => {
+          this.bulletins = [];
+          console.log(result)
+  
+          for (let p of result) {
+            {
+              this.bulletins.push(
+                new Bulletin(p.id, p.cours.intitule, p.note, p.commentaire));
+            }
+          }
+        });
+      }}
   }
 
   delete(id: number) {

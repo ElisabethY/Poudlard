@@ -1,1 +1,30 @@
-<p>bulletin-edit works!</p>
+<div>
+  <div class="form-group">
+    <label>id:</label>
+    <input
+      [(ngModel)]="bulletin.id"
+      readonly
+      class="form-control"
+      placeholder="generation auto"
+    />
+  </div>
+  <div class="form-group">
+    <label>cours:</label>
+    <input type="text" readonly [(ngModel)]="bulletin.cours!.intitule" class="form-control" />
+  </div>
+  </div>
+  <div class="form-group">
+    <label>note:</label>
+    <input type="texte" [(ngModel)]="bulletin.note" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>commentaire:</label>
+    <input type="texte" [(ngModel)]="bulletin.commentaire" class="form-control" />
+
+  <div>
+    <button (click)="save()" class="btn btn-outline-success">
+      enregistrer
+    </button>
+    <a routerLink="/cours" class="btn btn-outline-warning">annuler</a>
+  </div>
+</div>
