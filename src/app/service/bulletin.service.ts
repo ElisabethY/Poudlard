@@ -4,12 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BulletinService {
-
-  private static URL: string = 'http://localhost:8080/poudlard/api/bulletin/eleve';
-  private static UPDATE: string = 'http://localhost:8080/poudlard/api/bulletin/update';
+  private static URL: string =
+    'http://localhost:8080/poudlard/api/bulletin/eleve';
+  private static UPDATE: string =
+    'http://localhost:8080/poudlard/api/bulletin/update';
 
   constructor(private http: HttpClient) {}
 
@@ -25,21 +26,24 @@ export class BulletinService {
     return this.http.get<any>(`${BulletinService.URL}/${id}`);
   }
 
-  public create(bulletin : Bulletin): Observable<any> {
+  public create(bulletin: Bulletin): Observable<any> {
     return this.http.post(BulletinService.URL, this.BulletinToJson(bulletin));
   }
 
   public update(bulletin: Bulletin): Observable<any> {
-    return this.http.put(`${BulletinService.UPDATE}/${bulletin.id}`, this.BulletinToJson(bulletin));
+    return this.http.put(
+      `${BulletinService.UPDATE}/${bulletin.id}`,
+      this.BulletinToJson(bulletin)
+    );
   }
 
   private BulletinToJson(bulletin: Bulletin): any {
     let obj = {
       id: bulletin.id,
       cours: bulletin.cours,
-      note:bulletin.note,
-      commentaire : bulletin.commentaire,
-      eleve:bulletin.eleve
+      note: bulletin.note,
+      commentaire: bulletin.commentaire,
+      eleve: bulletin.eleve,
     };
     return obj;
   }

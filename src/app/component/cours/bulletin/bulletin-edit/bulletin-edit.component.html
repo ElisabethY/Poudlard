@@ -27,7 +27,7 @@
   </div>
   <div class="form-group">
     <label>commentaire:</label>
-    <input type="texte" [(ngModel)]="bulletin.commentaire" class="form-control" />
+    <input type="texte" [(ngModel)]="bulletin.commentaire" class="form-control " (keyup.enter)="save()" />
 
   <div>
     <button (click)="save()" class="btn btn-outline-success">

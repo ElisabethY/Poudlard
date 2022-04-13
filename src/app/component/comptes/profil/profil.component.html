@@ -49,7 +49,7 @@
       <div class="form-group">
       </div>
     </span>
-    <span> <input *ngIf="role()=='eleve'" type="number" [(ngModel)]="soldeNew" class="form-control" />
+    <span> <input *ngIf="role()=='eleve'" type="number" [(ngModel)]="soldeNew" class="form-control" (keyup.enter)="recharge()"/>
     </span>
     <button (click)="recharge()" class="btn btn-outline-success">
       Valider
