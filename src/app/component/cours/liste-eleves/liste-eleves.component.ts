@@ -27,9 +27,6 @@ export class ListeElevesComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       this.identifiant = params['id'];
       console.log(params);
-    });
-
-    {
       this.eleveService.getbyCours(this.identifiant).subscribe((result) => {
         this.eleves = [];
 
@@ -48,19 +45,10 @@ export class ListeElevesComponent implements OnInit {
           }
         }
       });
-    }
-  }
-
-  delete(id: number) {
-    this.eleveService.delete(id).subscribe(() => {
-      this.list();
     });
-  }
-  isAuthenticated() {
-    return this.authService.isAuthenticated();
+
+
   }
 
-  get role() {
-    return localStorage.getItem('role');
-  }
+
 }

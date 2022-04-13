@@ -20,9 +20,9 @@
   </div>
   <div>
   <label>Categorie</label>
-<select [(ngModel)]="categorie" class="form-control" >
+<select [(ngModel)]="categorie" class="form-control"  >
   <option *ngFor="let c of categorie | keyvalue" [value]="c.key">
-    {{c.value}}
+    {{c.value}} [compareWith]=
   </option>
 </select>
 </div>
