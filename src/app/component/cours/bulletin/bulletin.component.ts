@@ -1,4 +1,3 @@
-import { BulletinEditService } from './../../../service/bulletin-edit.service';
 import { Bulletin } from './../../../entity/bulletin';
 import { BulletinService } from './../../../service/bulletin.service';
 import { ActivatedRoute } from '@angular/router';
@@ -70,3 +69,4 @@ export class BulletinComponent implements OnInit {
   }
 
 }
+
