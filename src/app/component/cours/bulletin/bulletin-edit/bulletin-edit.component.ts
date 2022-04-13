@@ -48,9 +48,9 @@ export class BulletinEditComponent implements OnInit {
   }
   save() {
     if (this.bulletin.id) {
+      console.log(this.compte)
       this.bulletin.eleve = this.compte;
       this.bService.update(this.bulletin).subscribe(() => {
-        this.eleveService.update(this.compte).subscribe(() => {});
         this.goList();
       });
     }

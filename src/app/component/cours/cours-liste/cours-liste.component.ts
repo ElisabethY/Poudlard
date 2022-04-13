@@ -31,7 +31,7 @@ export class CoursListeComponent implements OnInit {
     this.courService.getAll().subscribe((result)=> {
       this.cours=[];
       for (let c of result){
-        console.log(c.professeur?.id) //undefined x9
+        //console.log(c.professeur?.id) //undefined x9
         if (c.professeur?.id == Number(localStorage.getItem('id')))
         {
           this.cours.push(
@@ -55,7 +55,7 @@ export class CoursListeComponent implements OnInit {
 
     delete(id: number) {
       this.courService.delete(id).subscribe((ok) => {
-        console.log("deleted")
+        //console.log("deleted")
         this.list();
       });
     }

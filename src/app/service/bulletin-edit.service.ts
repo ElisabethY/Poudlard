@@ -29,16 +29,23 @@ export class BulletinEditService {
   }
 
   public update(bulletin: Bulletin): Observable<any> {
+    console.log("update");
+    console.log(bulletin);
+    console.log(this.BulletinToJson(bulletin));
     return this.http.put(`${BulletinEditService.PUT}/${bulletin.id}`, this.BulletinToJson(bulletin));
   }
 
   private BulletinToJson(bulletin: Bulletin): any {
     let obj = {
       id: bulletin.id,
-      cours: bulletin.cours,
+      cours: {id:bulletin.cours!.id},
       note:bulletin.note,
       commentaire : bulletin.commentaire,
+      eleve : {id:bulletin.eleve!.id, type:"eleve"},
     };
+
+
+
     return obj;
   }
 }

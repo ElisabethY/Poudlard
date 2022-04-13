@@ -31,9 +31,11 @@ export class BulletinService {
   }
 
   public update(bulletin: Bulletin): Observable<any> {
+
     return this.http.put(
       `${BulletinService.UPDATE}/${bulletin.id}`,
       this.BulletinToJson(bulletin)
+
     );
   }
 
