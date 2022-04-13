@@ -40,24 +40,15 @@ export class ProfilComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.aR.params.subscribe((params)=>{
-      if(params['id']){
-       this.profService.get(params['id']).subscribe((result)=>{
-        this.comptes=result;
-       })
-      }
-    });
     this.aR.queryParams.subscribe((params) => {
       if (params['auth']) {
         this.erreur = true;
         this.message = 'Identifiants non reconnus';
       }
-    });
-    
+    }) 
   }
   check() {
     if (this.logins == localStorage.getItem('login')) {
-      console.log(this.logins);
       this.erreur = false;
       return (this.isOK = true);
     } else {
@@ -71,51 +62,37 @@ export class ProfilComponent implements OnInit {
   }
 
   recharge() {
+//     this.monSolde = Number(localStorage.getItem('solde'))
 
+//     if(this.soldeNew !=0){  
+//        this.monSolde += this.soldeNew;
 
-    this.monSolde = Number(localStorage.getItem('solde'));
+//        localStorage.setItem('solde', JSON.stringify(this.monSolde))
+//        if (localStorage.getItem('role') == 'prof') {
+//           this.profService.get(Number(localStorage.getItem('id'))).subscribe((compteP)=>{
+//           this.comptes= compteP })
+         
+//           this.profService.update(this.comptes).subscribe(() => {
+//            this.goList();
+//           })}
 
-    if(this.soldeNew !=0){
-    this.monSolde += this.soldeNew;
-    if (localStorage.getItem('role') == 'prof') {
-      this.profService.get(localStorage.getItem('id')).subscribe((compteP)=>{
+//         if (localStorage.getItem('role') == 'eleve') {
+//            this.profService.get(Number(localStorage.getItem('id')).subscribe((compteP)=>{
+//            this.compte= compteP
+//            this.compte.solde = this.monSolde
+//          this.eleveService.update(this.compte).subscribe(() => {
+//          this.goList()
+//         }
+//         )}))}
+// },
+//     else{
+//       this.isEdition = false;
+//       this.isOK = false;
+//       this.isTransaction = true;
+//      return  this.msg='Solde Inchangé';}
+  
+}
 
-      })
-      localStorage.setItem('solde', JSON.stringify(this.monSolde))
-      this.profService.update(this.comptes).subscribe(() => {
-        this.goList();
-      });
-    }
-    if (localStorage.getItem('role') == 'eleve') {
-      this.compte.type = localStorage.getItem('role')!
-      this.compte.solde = this.monSolde
-      // this.compte.id = Number(localStorage.getItem('id'))
-      // this.compte.nom = localStorage.getItem('nom')!
-      // this.compte.prenom = localStorage.getItem('prenom')!
-      // this.compte.naissance = new Date(localStorage.getItem('naissance')!)
-      // this.compte.password = localStorage.getItem('password')
-      // this.compte.login =  localStorage.getItem('login')!
-      // this.maisonUpdate.id = Number(localStorage.getItem('maisonId')!)
-      // this.maisonUpdate.nom= localStorage.getItem('maison')!
-      // this.maisonUpdate.score= Number(localStorage.getItem('score')!)
-     
-      // this.maisonService.create(this.maisonUpdate).subscribe(() => {
-      // });
-      // this.compte.maison= this.maisonUpdate
-      // this.compte.maison.id=  this.maisonUpdate.id
-      // this.compte.maison.score=  this.maisonUpdate.score
-      // this.compte.maison.nom=   this.maisonUpdate.nom
-      localStorage.setItem('solde', JSON.stringify(this.monSolde))
-      this.eleveService.update(this.compte).subscribe(() => {
-        this.goList();
-      });
-    }}
-    else{
-      this.isEdition = false;
-      this.isOK = false
-      this.isTransaction = true
-      this.msg='Solde Inchangé'}
-  }
   goList() {
     this.router.navigateByUrl('/profil');
     this.isEdition = false;
