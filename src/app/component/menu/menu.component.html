@@ -53,14 +53,14 @@
             cours
           </a>
         </li>
-        <li class="nav-item" *ngIf="role == 'prof'">
-          <a routerLink="/panier" routerLinkActive="active" class="nav-link">
-            panier
-          </a>
-        </li>
         <li class="nav-item">
           <a routerLink="/boutique" routerLinkActive="active" class="nav-link">
             boutique
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="role == 'prof'">
+          <a routerLink="/panier" routerLinkActive="active" class="nav-link">
+            panier
           </a>
         </li>
         <li class="nav-item">

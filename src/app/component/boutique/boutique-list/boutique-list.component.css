@@ -1,0 +1,26 @@
+body
+{
+  height: 700px;
+  background:   linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3) ),  url("/assets/Images/Fond.jpg");
+
+}
+html{
+  background-color: black;
+
+
+
+}
+footer
+{
+  display: flex;
+  align-content: flex-end;
+  background: rgba(0, 0, 0, 0.8);
+  color: #8c8c8c;
+  width: 100%;
+  padding: 20px;
+}
+
+table{
+  color: #e0e0e0;
+
+}
