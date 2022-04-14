@@ -76,14 +76,13 @@ export class ProfilComponent implements OnInit {
           });
       }
       if (localStorage.getItem('role') == 'eleve') {
-        this.profService
+        this.eleveService
           .get(Number(localStorage.getItem('id')))
-          .subscribe((compteP) => {
-            this.compte = compteP;
+          .subscribe((compteE) => {
+            this.eleveService.update(compteE).subscribe(() => {
+              this.goList();
+            });
           });
-        this.eleveService.update(this.compte).subscribe(() => {
-          this.goList();
-        });
       }
     } else {
       this.isEdition = false;

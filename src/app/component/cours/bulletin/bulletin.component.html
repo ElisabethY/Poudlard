@@ -9,7 +9,7 @@
     <td>{{ b.cours }}</td>
     <td>{{ b.note }}</td>
     <td>{{ b.commentaire }}</td>
-
+<span *ngIf="role=='prof'">
   <td>
     <a
       [routerLink]="['/bulletin', 'edit', b.id]"
@@ -17,6 +17,7 @@
       class="btn btn-outline-primary"
       >editer</a>
   </td>
+</span>
 </tr>
 
 </table>
