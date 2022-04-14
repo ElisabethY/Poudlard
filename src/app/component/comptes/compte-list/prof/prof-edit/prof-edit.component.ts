@@ -47,9 +47,12 @@ export class ProfEditComponent implements OnInit {
       this.goList();
     }
     else {
+
+
       this.ProfService.create(this.prof).subscribe((prof) => {
+        
         this.goList();
-      prof.cours=  this.cours
+        this.cours!.professeur = prof;
         this.coursService.create(this.cours!).subscribe(() => {});
       });
     }
