@@ -10,25 +10,25 @@
 
   </div>
   <div class="form-group">
-    <label>Ensigne</label>
+    <label>Enseigne:</label>
     <input type="text" [(ngModel)]="boutique.nom" class="form-control" />
   </div>
   </div>
   <div class="form-group">
-    <label>Adresse</label>
+    <label>Adresse:</label>
     <input type="text" [(ngModel)]="boutique.adresse" class="form-control" />
   </div>
   <div>
-  <label>Categorie</label>
-<select [(ngModel)]="categorie" class="form-control"  >
-  <option *ngFor="let c of categorie | keyvalue" [value]="c.key">
-    {{c.value}} [compareWith]=
+  <label>Categorie:</label>
+<select [(ngModel)]="categorie" class="form-control" [compareWith]="byIdBoutique" >
+  <option *ngFor="let m of boutiqueArr" [ngValue]="m">
+    {{m.categorie}}
   </option>
 </select>
 </div>
   <div>
     <button (click)="save()" class="btn btn-outline-success">
-      enregistrer
+      Enregistrer
     </button>
     <a routerLink="/boutique" class="btn btn-outline-warning">annuler</a>
   </div>

@@ -33,6 +33,7 @@ import { BulletinComponent } from './component/cours/bulletin/bulletin.component
 import { ProfilComponent } from './component/comptes/profil/profil.component';
 import { ValidationComponent } from './component/boutique/panier/validation/validation.component';
 import { BulletinEditComponent } from './component/cours/bulletin/bulletin-edit/bulletin-edit.component';
+import { ProduitAddComponent } from './component/boutique/produit-add/produit-add/produit-add.component';
 // import { FromTemplateComponent } from './component/formulaire/from-template/from-template.component';
 // import { FormCodeComponent } from './component/formulaire/form-code/form-code.component';
 
@@ -63,6 +64,7 @@ import { BulletinEditComponent } from './component/cours/bulletin/bulletin-edit/
     ProfilComponent,
     ValidationComponent,
     BulletinEditComponent,
+    ProduitAddComponent,
     // FromTemplateComponent,
     // FormCodeComponent,
 

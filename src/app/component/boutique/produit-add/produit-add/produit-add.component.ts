@@ -1,17 +1,16 @@
-import { Produit } from './../../../entity/produit';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Boutique } from 'src/app/entity/boutique';
+import { Produit } from 'src/app/entity/produit';
 import { BoutiqueService } from 'src/app/service/boutique.service';
 import { ProduitService } from 'src/app/service/produit.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/service/auth.service';
-import { Boutique } from 'src/app/entity/boutique';
 
 @Component({
-  selector: 'app-produit-edit',
-  templateUrl: './produit-edit.component.html',
-  styleUrls: ['./produit-edit.component.css']
+  selector: 'app-produit-add',
+  templateUrl: './produit-add.component.html',
+  styleUrls: ['./produit-add.component.css']
 })
-export class ProduitEditComponent implements OnInit {
+export class ProduitAddComponent implements OnInit {
   produit: Produit  = new Produit();
   boutiqueArr: Boutique[] = [];
 
@@ -39,23 +38,18 @@ export class ProduitEditComponent implements OnInit {
   }
 
   save() {
-    if (this.produit.id) {
-    console.log("on entre dans le save")
-      this.produitService.update(this.produit).subscribe((result) => {
-        this.goList();
-        console.log(result)
-      });
-    } else {
+
       this.produitService.create(this.produit).subscribe((result) => {
         this.goList();
         console.log(result)
       });
-    }
+
   }
 
   goList() {
     this.router.navigateByUrl('/boutique');
   }
+
 
   byIdBoutique(b1: Boutique, b2: Boutique) {
     if (b1 && b2) return b1.id == b2.id;

@@ -13,6 +13,7 @@ export class BoutiqueEditComponent implements OnInit {
   boutique: Boutique = new Boutique();
   categorie = Categorie;
   enumKey: [] = [];
+  boutiqueArr: Boutique[] = [];
 
   constructor(
     private aR: ActivatedRoute,
@@ -21,6 +22,12 @@ export class BoutiqueEditComponent implements OnInit {
   ) {}
   //test
   ngOnInit(): void {
+
+    this.boutiqueService.getAll().subscribe((result) => {
+      console.log(result)
+      this.boutiqueArr = result;
+    });
+
     this.aR.params.subscribe((params) => {
       if (params['id']) {
         this.boutiqueService.get(params['id']).subscribe((result) => {
@@ -45,5 +52,10 @@ export class BoutiqueEditComponent implements OnInit {
 
   goList() {
     this.router.navigateByUrl('/boutique');
+  }
+
+  byIdBoutique(b1: Boutique, b2: Boutique) {
+    if (b1 && b2) return b1.id == b2.id;
+    return false;
   }
 }
