@@ -63,7 +63,9 @@ export class BulletinComponent implements OnInit {
       }
     }
   }
-
+  get role() {
+   return  localStorage.getItem('role');
+  }
   delete(id: number) {
     this.bulletin.delete(id).subscribe(() => {
       this.list();

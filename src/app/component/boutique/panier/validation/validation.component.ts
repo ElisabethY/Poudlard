@@ -1,3 +1,4 @@
+import { EleveService } from 'src/app/service/eleve.service';
 import { MaisonService } from './../../../../service/maison.service';
 import { Maison } from './../../../../entity/maison';
 import { Router } from '@angular/router';
@@ -26,6 +27,7 @@ export class ValidationComponent implements OnInit {
 
   constructor(
     private profService: ProfService,
+    private eleveService: EleveService,
     private router: Router //  private maisonService :MaisonService
   ) {}
 
@@ -35,22 +37,20 @@ export class ValidationComponent implements OnInit {
     this.monSolde = Number(localStorage.getItem('solde'));
     if (this.monSolde - Number(this.prixTotal) >= 0) {
       this.monSolde -= Number(this.prixTotal);
-
+      localStorage.setItem('solde', JSON.stringify(this.monSolde));
       if (localStorage.getItem('role') == 'prof') {
         this.compteP.solde = this.monSolde;
-        localStorage.setItem('solde', JSON.stringify(this.monSolde));
         this.profService.update(this.compteP).subscribe(() => {
           this.goList();
         });
         // this.monPanier.Compte= this.compteP
         // this.panierService.create(this.monPanier).subscribe(()=>
         // {
-
         // })
       }
       if (localStorage.getItem('role') == 'eleve') {
         this.compteE.solde = this.monSolde;
-        this.profService.update(this.compteE).subscribe(() => {
+        this.eleveService.update(this.compteE).subscribe(() => {
           this.goList();
         });
       }

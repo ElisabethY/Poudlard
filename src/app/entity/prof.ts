@@ -1,6 +1,6 @@
 import { Compte } from './compte';
 import { Maison } from './maison';
-import { Cours } from './cours';
+
 export class Prof extends Compte {
   public constructor(
     id?: number | undefined,

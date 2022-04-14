@@ -6,28 +6,31 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-eleve-edit',
   templateUrl: './eleve-edit.component.html',
-  styleUrls: ['./eleve-edit.component.css']
+  styleUrls: ['./eleve-edit.component.css'],
 })
 export class EleveEditComponent implements OnInit {
-  eleve: Eleve= new Eleve();
+  eleve: Eleve = new Eleve();
 
-
-  constructor (private aR:ActivatedRoute,
+  constructor(
+    private aR: ActivatedRoute,
     private eleveService: EleveService,
-    private router: Router) {}
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.aR.params.subscribe((params)=>{
-      if(params['id']){
-       this.eleveService.get(params['id']).subscribe((result)=>{
-        this.eleve=result;
-       })
+    this.aR.params.subscribe((params) => {
+      if (params['id']) {
+        this.eleveService
+          .getEleveForUpdate(params['id'])
+          .subscribe((result) => {
+            this.eleve = result;
+          });
       }
-    })
+    });
   }
   save() {
     if (this.eleve.id) {
-      this.eleveService.update(this.eleve).subscribe(() => {
+      this.eleveService.updateEleveIfAdmin(this.eleve).subscribe(() => {
         this.goList();
       });
     } else {

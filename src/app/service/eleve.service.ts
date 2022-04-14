@@ -8,8 +8,8 @@ import { Injectable } from '@angular/core';
 })
 export class EleveService {
   private static URL: string = 'http://localhost:8080/poudlard/api/eleve';
-  private static PUT: string = 'http://localhost:8080/poudlard/api/eleve/put'
-  private static GET: string = 'http://localhost:8080/poudlard/api/cours/get'
+  private static PUT: string = 'http://localhost:8080/poudlard/api/eleve/put';
+  private static GET: string = 'http://localhost:8080/poudlard/api/cours/get';
   constructor(private http: HttpClient) {}
 
   public getAll(): Observable<any[]> {
@@ -18,6 +18,9 @@ export class EleveService {
 
   public delete(id: number): Observable<void> {
     return this.http.delete<void>(`${EleveService.URL}/${id}`);
+  }
+  public getEleveForUpdate(id: number): Observable<any> {
+    return this.http.get<any>(`${EleveService.URL}/${id}`);
   }
 
   public get(id: number): Observable<any> {
@@ -32,8 +35,13 @@ export class EleveService {
     return this.http.post(EleveService.URL, this.EleveToJson(eleve));
   }
 
+  public updateEleveIfAdmin(eleve: Eleve): Observable<any> {
+    return this.http.put(
+      `${EleveService.PUT}/${eleve.id}`,
+      this.EleveToJson(eleve)
+    );
+  }
   public update(eleve: Eleve): Observable<any> {
-    console.log(eleve)
     return this.http.put(
       `${EleveService.PUT}/${localStorage.getItem('id')}`,
       this.EleveToJson(eleve)
@@ -50,7 +58,11 @@ export class EleveService {
       password: eleve.password,
       solde: eleve.solde,
       type: 'eleve',
-      maison: {id: eleve.maison?.id}
+      maison: {
+        id: eleve.maison?.id,
+        nom: eleve.maison?.nom,
+        score: eleve.maison?.score,
+      },
     };
     return obj;
   }
