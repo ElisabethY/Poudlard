@@ -1,41 +1,146 @@
+<html>
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+<header>
+</header>
 
 
-<table class="table table-striped table-responsive" >
-<thead>
-  <tr>
-    <th>ID</th>
-    <th>Evenement</th>
-    <th>Date</th>
-    <th>Heure</th>
-  </tr>
-</thead>
-<tbody>
-  <tr *ngFor="let e of events">
-    <td>{{ e.id }}</td>
-    <td>{{ e.nomEven }}</td>
-    <td>{{ e.date  | date: "dd/MM/yyyy"}}</td>
-    <td>{{ e.heure}}</td>
-                                              <!-- EDITION UNIQUEMENT POUR ADMIN -->
-    <span *ngIf="isAuthenticated() && role=='admin' ">
-    <td>
-      <a [routerLink]="['/evenement', 'edit', e.id]"
-        routerLinkActive="active"
-        class="btn btn-outline-primary"
-        >editer</a>
-    </td>
-    <td>
-      <button class="btn btn-outline-danger" (click)="delete(e.id!)">
-        supprimer
-      </button>
-    </td>
-  </span>
 
-  </tr>
-</tbody>
-</table>
-<span *ngIf="isAuthenticated() && role=='admin' ">
-<button routerLink="/evenement/add" routerLinkActive="active" class="btn btn-outline-success"
-  >créer un evenement</button>
+<!-- ----------------------------------------------------------------------------------------------- -->
+<body>
+  <table class="table table-dark" *ngIf="role=='admin'"  >
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Evenement</th>
+        <th>Date</th>
+        <th>Heure</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of events">
+        <td>{{ e.id }}</td>
+        <td>{{ e.nomEven }}</td>
+        <td>{{ e.date  | date: "dd/MM/yyyy"}}</td>
+        <td>{{ e.heure}}</td>
+                                                  <!-- EDITION UNIQUEMENT POUR ADMIN -->
+        <span *ngIf="isAuthenticated() && role=='admin' ">
+        <td>
+          <a [routerLink]="['/evenement', 'edit', e.id]"
+            routerLinkActive="active"
+            class="btn btn-outline-primary"
+            >editer</a>
+        </td>
+        <td>
+          <button class="btn btn-outline-danger" (click)="delete(e.id!)">
+            supprimer
+          </button>
+        </td>
+      </span>
+      </tr>
+      <span *ngIf="isAuthenticated() && role=='admin' ">
+        <button routerLink="/evenement/add" routerLinkActive="active" class="btn btn-outline-success"
+          >créer un evenement</button>
+        </span>
+    </tbody>
+    </table>
+    <span *ngIf="role=='prof' || role=='eleve'">
+<h1> Evenements </h1>
+  <!-- Carousel -->
+  <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
+
+    <!-- The slideshow/carousel -->
+    <div id="caroussel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/assets/Images/evenements/Bal.jpg" alt="Los Angeles" class="d-block" style="width:100%">
+        <div class="content">
+          <h1>Bal de Noel</h1>
+    </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/assets/Images/evenements/banquet.jpg" alt="Chicago" class="d-block" style="width:100%">
+        <div class="content">
+          <h1>Banquet de fin d'année</h1>
+
+    </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/assets/Images/evenements/Tournois.png" alt="New York" class="d-block" style="width:100%">
+        <div class="content">
+          <h1>Bal de Noel</h1>
+
+    </div>
+      </div>
+    </div>
+
+
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+
+</div>
 </span>
+<section id="texte">
+  <h1>Où nous trouver</h1>
+  Poudlard se situe dans le Nord du Royaume-Uni, en Écosse.[2] L'endroit est décrit comme montagneux et est situé à proximité d'un lac. L'école se situe également non loin de Pré-au-Lard, un village exclusivement habité par des sorciers.
+
+
+Les premières années en barques.
+
+Le château de Poudlard est incartable, il n’apparaît jamais sur une carte géographique.
+
+Les élèves de première année sont conduits au château en barques alors que les autres élèves y accèdent en diligences. Ces dernières remontent une longue route qui contourne le lac et qui se termine devant les grilles de fer forgé du portail de l'enceinte de Poudlard.
+
+Il existe aussi huit passages secrets qui conduisent hors de l'enceinte de Poudlard dont sept sont visibles depuis la Carte du Maraudeur. Le dernier fût construit en 1998 par la Salle sur Demande. Argus Rusard et les jumeaux Weasley semblent faire partie de ceux qui les connaissent.[3]
+
+Dans le château, on retrouve :
+Un passage caché derrière un miroir du quatrième étage, rendu impraticable suite à un éboulement.
+Un passage caché sous la statue d'une sorcière borgne et qui mène à la boutique Honeydukes de Pré-au-Lard.
+Un passage dans la salle sur demande menant à "La Tête de Sanglier", une auberge de Pré-au-Lard.
+Dans le Parc du château, on retrouve :
+Un passage sous le Saule cogneur menant à la Cabane Hurlante.
+Dans le château, on retrouve :
+Un passage caché derrière un miroir du quatrième étage, rendu impraticable suite à un éboulement.
+Un passage caché sous la statue d'une sorcière borgne et qui mène à la boutique Honeydukes de Pré-au-Lard.
+Un passage dans la salle sur demande menant à "La Tête de Sanglier", une auberge de Pré-au-Lard.
+Dans le Parc du château, on retrouve :
+Un passage sous le Saule cogneur menant à la Cabane Hurlante.
+Dans le château, on retrouve :
+Un passage caché derrière un miroir du quatrième étage, rendu impraticable suite à un éboulement.
+Un passage caché sous la statue d'une sorcière borgne et qui mène à la boutique Honeydukes de Pré-au-Lard.
+Un passage dans la salle sur demande menant à "La Tête de Sanglier", une auberge de Pré-au-Lard.
+Dans le Parc du château, on retrouve :
+Un passage sous le Saule cogneur menant à la Cabane Hurlante.
+
+  </section>
+
+
+  <footer>
+
+    <p>Mis à jour le 14/04/2022</p>
+
+  </footer>
+
+  </body>
 
 

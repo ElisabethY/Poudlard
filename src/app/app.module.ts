@@ -36,7 +36,6 @@ import { BulletinEditComponent } from './component/cours/bulletin/bulletin-edit/
 // import { FromTemplateComponent } from './component/formulaire/from-template/from-template.component';
 // import { FormCodeComponent } from './component/formulaire/form-code/form-code.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,18 +64,22 @@ import { BulletinEditComponent } from './component/cours/bulletin/bulletin-edit/
     BulletinEditComponent,
     // FromTemplateComponent,
     // FormCodeComponent,
-
-
-
   ],
   imports: [
-    HttpClientModule, BrowserModule, RouterModule.forRoot(routes),FormsModule, ReactiveFormsModule, RouterModule
+    HttpClientModule,
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
   ],
   // permet que ds tous le module on puisse user l'interceptor pour toute les requetes
-  providers: [{provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
-title = 'Poudlard';
+  title = 'Poudlard';
 
 }

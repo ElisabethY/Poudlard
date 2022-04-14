@@ -1,59 +1,85 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark"  [ngClass]="{
-  banniere_spt: maison == 'Serpentard',
-  banniere_grf: maison == 'Griffondor',
-  banniere_ps: maison == 'Poufsouffle',
-  banniere_ser: maison == 'Serdaigle'
-}">
-  <a class="navbar-brand" href="#">GUTEN TAG, {{ prenom }} {{ nom }} ({{ solde }}£)</a>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto" *ngIf="isAuthenticated()">
-      <li class="nav-item active" *ngIf="role == 'prof' || role == 'eleve'">
-        <a routerLink="/profil" routerLinkActive="active" class="nav-link">
-          profil
-        </a>
-      </li>
-      <li class="nav-item active">
-        <a routerLink="/evenement" routerLinkActive="active" class="nav-link">
-          evenements
-        </a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/maison" routerLinkActive="active" class="nav-link">
-          maisons
-        </a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/boutique" routerLinkActive="active" class="nav-link">
-          boutique
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="role == 'admin'">
-        <a routerLink="/compte" routerLinkActive="active" class="nav-link">
-          comptes
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="role == 'eleve'">
-        <a routerLink="/bulletin" routerLinkActive="active" class="nav-link">
-          bulletin
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="role == 'prof'">
-        <a routerLink="/cours" routerLinkActive="active" class="nav-link">
-          cours
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="role == 'prof'">
-        <a routerLink="/panier" routerLinkActive="active" class="nav-link">
-          panier
-        </a>
-      </li>
-    </ul>
+
+<head>
+  <title>Bootstrap 5 Website Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+
+  </style>
+</head>
+<body>
+
+  <div class="banner" class="navigation" class="navbar navbar-expand-lg navbar-dark bg-dark"  [ngClass]="{
+    banniere_spt: maison == 'Serpentard',
+    banniere_grf: maison == 'Griffondor',
+    banniere_ps: maison == 'Poufsouffle',
+    banniere_ser: maison == 'Serdaigle'
+  }">
+  <div id="texte">
+    <h1> <a href="/evenement"><img id="logo" src="/assets/Images/pagelogin/HogwartsLogo2.png" alt="logo">
+    </a>Bienvenu à Poudlard </h1>
   </div>
-  <form class="d-flex" style="float: right;">
-    <button *ngIf="!isAuthenticated()" class="btn btn-outline-success" routerLink="/connexion"
-    routerLinkActive="active" type="submit">Login</button>
-    <button *ngIf="isAuthenticated()" (click)="logout()" class="btn btn-outline-danger" routerLink="/connexion"
-    routerLinkActive="active" type="submit">Logout</button>
-  </form>
-</nav>
+</div>
+
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="collapse navbar-collapse" class="container">
+      <ul class="navbar-nav mr-auto" *ngIf="isAuthenticated()">
+        <li>
+          <a routerLink="/evenement" routerLinkActive="active" class="nav-link">
+            evenements
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/maison" routerLinkActive="active" class="nav-link">
+            maisons
+          </a>
+        </li>
+
+        <li class="nav-item" *ngIf="role == 'admin'">
+          <a routerLink="/compte" routerLinkActive="active" class="nav-link">
+            comptes
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="role == 'eleve'">
+          <a routerLink="/bulletin" routerLinkActive="active" class="nav-link">
+            bulletin
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="role == 'prof'">
+          <a routerLink="/cours" routerLinkActive="active" class="nav-link">
+            cours
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="role == 'prof'">
+          <a routerLink="/panier" routerLinkActive="active" class="nav-link">
+            panier
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/boutique" routerLinkActive="active" class="nav-link">
+            boutique
+          </a>
+        </li>
+        <li class="nav-item">
+
+        <div class="nav-item active" *ngIf="role == 'prof' || role == 'eleve'">
+          <a routerLink="/profil" routerLinkActive="active" class="nav-link">
+            profil
+          </a>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+      <button *ngIf="!isAuthenticated()" class="btn btn-outline-success" routerLink="/connexion"
+      routerLinkActive="active" type="submit">Login</button>
+      <button *ngIf="isAuthenticated()" (click)="logout()" class="btn btn-outline-danger" routerLink="/connexion"
+      routerLinkActive="active" type="submit">Logout</button>
+
+  </nav>
+
 <router-outlet></router-outlet>
