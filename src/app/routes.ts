@@ -25,7 +25,6 @@ import { CoursEditComponent } from './component/cours/cours-edit/cours-edit.comp
 import { EvenementComponent } from './component/evenement/evenement.component';
 
 import { Routes } from "@angular/router";
-import { ProduitAddComponent } from './component/boutique/produit-add/produit-add/produit-add.component';
  // import { FromTemplateComponent } from './component/formulaire/from-template/from-template.component';
 
 export
@@ -68,7 +67,7 @@ const routes : Routes= [
 {path: 'boutique/edit/:id',component: BoutiqueEditComponent},
 {path: 'boutique/produit/detail/:id',component: ProduitDetailComponent},
 {path: 'boutique/produit/edit/:id',component: ProduitEditComponent},
-{path: 'boutique/produit/add',component: ProduitAddComponent},
+{path: 'boutique/produit/add',component: ProduitEditComponent},
 //{path: 'formulaire/template',component: FromTemplateComponent},
 ]
 

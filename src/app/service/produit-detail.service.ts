@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class ProduitDetailService {
   private static URL: string = 'http://localhost:8080/poudlard/api/catalogue';
+  private static CREATE: string = 'http://localhost:8080/poudlard/api/catalogue/boutique';
 
   constructor(private http: HttpClient) {}
 

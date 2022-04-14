@@ -16,8 +16,7 @@ export class ProduitDetailComponent implements OnInit {
   constructor(
     private aR: ActivatedRoute,
     private produitDService: ProduitDetailService,
-    private route:Router
-
+    private route: Router
   ) {}
 
   ngOnInit(): void {
@@ -30,38 +29,33 @@ export class ProduitDetailComponent implements OnInit {
     });
   }
   addPanier() {
-
     let obj = {
-      id:  this.article.id,
+      id: this.article.id,
       libelle: this.article.libelle,
       description: this.article.description,
       prix: this.article.prix,
-      boutique: this.article.boutique?.nom
-     }
+      boutique: this.article.boutique?.nom,
+    };
 
-     let objarr = []
+    let objarr = [];
 
-    if(localStorage.getItem('monPanier')){
-
+    if (localStorage.getItem('monPanier')) {
       objarr = JSON.parse(localStorage.getItem('monPanier') || '{}');
 
-      if (objarr.find((i:any) => i.id == this.article.id))
-      {
-        console.log("EXISTE DEJA DANS LE PANIER")
-        return this.message='ITEM DEJA PRESENT DANS LE PANIER'
+      if (objarr.find((i: any) => i.id == this.article.id)) {
+        console.log('EXISTE DEJA DANS LE PANIER');
+        return (this.message = 'ITEM DEJA PRESENT DANS LE PANIER');
+      } else {
+        console.log('EXISTE PAS DANS PANIER ');
+        objarr.push(obj);
+        this.message = 'PRODUIT AJOUTE AU PANIER';
       }
-      else{
-        console.log("EXISTE PAS DANS PANIER ")
-        objarr.push(obj)
-        this.message='PRODUIT AJOUTE AU PANIER'
-      }}
-      else {
-         objarr.push(obj)
-        this.message='PRODUIT AJOUTE AU PANIER'
+    } else {
+      objarr.push(obj);
+      this.message = 'PRODUIT AJOUTE AU PANIER';
+    }
 
-      }
-
-      localStorage.setItem('monPanier', JSON.stringify(objarr))
-      return  console.log(localStorage.getItem('monPanier'))
-}
+    localStorage.setItem('monPanier', JSON.stringify(objarr));
+    return console.log(localStorage.getItem('monPanier'));
+  }
 }
