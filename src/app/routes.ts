@@ -33,6 +33,7 @@ const routes : Routes= [
 {path: 'connexion',component: LoginComponent},
 {path: 'profil',component: ProfilComponent},
 
+
 {path: 'menu',component: MenuComponent},
 {path: 'evenement',component: EvenementComponent},
 {path: 'evenement/edit/:id',component: EventEditComponent},

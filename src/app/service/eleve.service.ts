@@ -35,7 +35,7 @@ export class EleveService {
   public update(eleve: Eleve): Observable<any> {
     console.log(eleve)
     return this.http.put(
-      `${EleveService.PUT}/${eleve.id}`,
+      `${EleveService.PUT}/${localStorage.getItem('id')}`,
       this.EleveToJson(eleve)
     );
   }
@@ -49,7 +49,7 @@ export class EleveService {
       naissance: eleve.naissance,
       password: eleve.password,
       solde: eleve.solde,
-      type: 'eleve', 
+      type: 'eleve',
       maison: {id: eleve.maison?.id}
     };
     return obj;

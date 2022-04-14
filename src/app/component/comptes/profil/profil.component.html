@@ -29,7 +29,7 @@
         {{message}}
       </div>
       <label>Login</label>
-      <input type="text" class="form-control" [(ngModel)]="logins" />
+      <input type="text" class="form-control" [(ngModel)]="logins" (keyup.enter)="check()" />
     </div>
     <div>
       <button (click)="check()" class="btn btn-outline-success">
@@ -45,7 +45,7 @@
   <div class="form-group">
     <label>Saisir le montant: </label>
     <span>
-      <input *ngIf="role()=='prof'" type="number" [(ngModel)]="soldeNew" class="form-control" />
+      <input *ngIf="role()=='prof'" type="number" [(ngModel)]="soldeNew" class="form-control"(keyup.enter)="recharge()" />
       <div class="form-group">
       </div>
     </span>

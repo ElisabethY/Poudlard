@@ -8,8 +8,6 @@ import { Component, OnInit } from '@angular/core';
 import { Compte } from 'src/app/entity/compte';
 import { ProfService } from 'src/app/service/prof.service';
 import { EleveService } from 'src/app/service/eleve.service';
-import { CompteService } from 'src/app/service/compte.service';
-
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
@@ -17,7 +15,7 @@ import { CompteService } from 'src/app/service/compte.service';
 })
 export class ProfilComponent implements OnInit {
   compte: Compte = new Eleve();
-  comptes: Compte = new Prof();
+  compteP: Compte = new Prof();
   erreur: boolean = false;
   message: string = '';
   logins: string = '';
@@ -36,9 +34,8 @@ export class ProfilComponent implements OnInit {
     private aR: ActivatedRoute,
     private profService: ProfService,
     private eleveService: EleveService,
-    private maisonService: MaisonService,
-    private compteService: CompteService,
-    private router: Router
+    private router: Router,
+    private maisonService: MaisonService
   ) {}
 
   ngOnInit(): void {
@@ -72,9 +69,11 @@ export class ProfilComponent implements OnInit {
         this.profService
           .get(Number(localStorage.getItem('id')))
           .subscribe((compteP) => {
-            this.comptes = compteP;
+            console.log(compteP);
+            this.compteP = compteP;
           });
-        this.profService.update(this.comptes).subscribe(() => {
+
+        this.profService.update(this.compteP).subscribe(() => {
           this.goList();
         });
       }
@@ -87,13 +86,13 @@ export class ProfilComponent implements OnInit {
         this.eleveService.update(this.compte).subscribe(() => {
           this.goList();
         });
-      } else {
+      }} else {
         this.isEdition = false;
         this.isOK = false;
         this.isTransaction = true;
         this.msg = 'Solde Inchangé';
       }
-    }
+
   }
 
   goList() {
