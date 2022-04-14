@@ -52,7 +52,7 @@ export class BulletinService {
       cours: bulletin.cours,
       note: bulletin.note,
       commentaire: bulletin.commentaire,
-      eleve: bulletin.eleve,
+      eleve: { type: 'eleve', id: bulletin.eleve?.id },
     };
     return obj;
   }
