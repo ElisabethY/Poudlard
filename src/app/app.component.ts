@@ -1,5 +1,3 @@
-import { Router } from '@angular/router';
-import { AuthService } from './service/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,19 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Poudlard';
-
-  public constructor(private authService: AuthService, private router:Router) {}
-
-  get login() {
-    return localStorage.getItem('login');
-  }
-  isAuthenticated() {
-    return this.authService.isAuthenticated();
-  }
-
-  logout() {
-    localStorage.clear();
-    this.router.navigateByUrl('/connexion');
-
-  }
 }

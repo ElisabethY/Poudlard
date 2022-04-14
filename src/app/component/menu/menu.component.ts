@@ -1,5 +1,6 @@
 import { AuthService } from './../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  title = 'Poudlard';
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  get login() {
+    return localStorage.getItem('login');
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigateByUrl('/connexion');
+  }
 
   isAuthenticated() {
     return this.authService.isAuthenticated();

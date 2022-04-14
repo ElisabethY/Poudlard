@@ -1,52 +1,59 @@
-<div
-  [ngClass]="{
-    banniere_spt: maison == 'Serpentard',
-    banniere_grf: maison == 'Griffondor',
-    banniere_ps: maison == 'Poufsouffle',
-    banniere_ser: maison == 'Serdaigle'
-  }"
->
-  <span *ngIf="isAuthenticated()">
-    <a routerLink="/evenement" routerLinkActive="active" class="btn btn-link">
-      evenements
-    </a>
-    <a routerLink="/maison" routerLinkActive="active" class="btn btn-link">
-      maisons
-    </a>
-    <a routerLink="/boutique" routerLinkActive="active" class="btn btn-link">
-      boutique
-    </a>
-
-    <span *ngIf="role == 'admin'">
-      <a routerLink="/compte" routerLinkActive="active" class="btn btn-link">
-        comptes
-      </a>
-    </span>
-
-    <span *ngIf="role == 'eleve'">
-      <a routerLink="/bulletin" routerLinkActive="active" class="btn btn-link">
-        bulletin
-      </a>
-    </span>
-    <span *ngIf="role == 'prof'">
-      <a routerLink="/cours" routerLinkActive="active" class="btn btn-link">
-        cours
-      </a>
-    </span>
-    <span *ngIf="role == 'prof' || role == 'eleve'">
-      <a routerLink="/profil" routerLinkActive="active" class="btn btn-link">
-        profil
-      </a>
-
-      <boutton
-        [routerLink]="['/panier']"
-        routerLinkActive="active"
-        class="btn btn-outline-primary"
-        >Panier</boutton
-      >
-      <p>{{ prenom }} {{ nom }}</p>
-      <p>SOLDE: {{ solde }} £</p>
-    </span>
-  </span>
-</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"  [ngClass]="{
+  banniere_spt: maison == 'Serpentard',
+  banniere_grf: maison == 'Griffondor',
+  banniere_ps: maison == 'Poufsouffle',
+  banniere_ser: maison == 'Serdaigle'
+}">
+  <a class="navbar-brand" href="#">GUTEN TAG, {{ prenom }} {{ nom }} ({{ solde }}£)</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" *ngIf="isAuthenticated()">
+      <li class="nav-item active" *ngIf="role == 'prof' || role == 'eleve'">
+        <a routerLink="/profil" routerLinkActive="active" class="nav-link">
+          profil
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a routerLink="/evenement" routerLinkActive="active" class="nav-link">
+          evenements
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/maison" routerLinkActive="active" class="nav-link">
+          maisons
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/boutique" routerLinkActive="active" class="nav-link">
+          boutique
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="role == 'admin'">
+        <a routerLink="/compte" routerLinkActive="active" class="nav-link">
+          comptes
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="role == 'eleve'">
+        <a routerLink="/bulletin" routerLinkActive="active" class="nav-link">
+          bulletin
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="role == 'prof'">
+        <a routerLink="/cours" routerLinkActive="active" class="nav-link">
+          cours
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="role == 'prof'">
+        <a routerLink="/panier" routerLinkActive="active" class="nav-link">
+          panier
+        </a>
+      </li>
+    </ul>
+  </div>
+  <form class="d-flex" style="float: right;">
+    <button *ngIf="!isAuthenticated()" class="btn btn-outline-success" routerLink="/connexion"
+    routerLinkActive="active" type="submit">Login</button>
+    <button *ngIf="isAuthenticated()" (click)="logout()" class="btn btn-outline-danger" routerLink="/connexion"
+    routerLinkActive="active" type="submit">Logout</button>
+  </form>
+</nav>
 <router-outlet></router-outlet>
