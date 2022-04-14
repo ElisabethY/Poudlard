@@ -7,6 +7,7 @@ export class Produit {
     private _description?: string| undefined,
     private _prix?: number| undefined,
     private _boutique?: Boutique| undefined,
+    private _img?: string | undefined,
   ) {}
 
   public get id(): number| undefined {
@@ -46,6 +47,12 @@ export class Produit {
   public set boutique(value: Boutique| undefined) {
     this._boutique = value ;
   }
+  public get img(): string | undefined{
+    return this._img;
+  }
 
+  public set img(value: string| undefined) {
+    this._img = value;
+  }
 }
 
