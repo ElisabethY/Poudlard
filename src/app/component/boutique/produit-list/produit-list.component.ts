@@ -1,10 +1,9 @@
 import { AuthService } from 'src/app/service/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { Produit } from './../../../entity/produit';
-import { Boutique } from './../../../entity/boutique';
 import { Component, OnInit } from '@angular/core';
 import { ProduitService } from 'src/app/service/produit.service';
-import { Panier } from 'src/app/entity/panier';
+
 
 @Component({
   selector: 'app-produit-list',
