@@ -39,16 +39,12 @@ export class ListeElevesComponent implements OnInit {
                 p.nom,
                 p.prenom,
                 p.naissance,
-                p.maison.nom
+      
               )
             );
           }
         }
       });
     });
-
-
   }
-
-
 }
