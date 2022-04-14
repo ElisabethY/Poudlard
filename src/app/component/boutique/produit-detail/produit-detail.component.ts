@@ -1,4 +1,4 @@
-import { ProduitDetailService } from './../../../service/produit-detail.service';
+import { ProduitService } from 'src/app/service/produit.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 import { Produit } from 'src/app/entity/produit';
@@ -15,14 +15,13 @@ export class ProduitDetailComponent implements OnInit {
 
   constructor(
     private aR: ActivatedRoute,
-    private produitDService: ProduitDetailService,
-    private route: Router
+    private produitDService: ProduitService,
   ) {}
 
   ngOnInit(): void {
     this.aR.params.subscribe((params) => {
       if (params['id']) {
-        this.produitDService.get(params['id']).subscribe((result) => {
+        this.produitDService.getDetail(params['id']).subscribe((result) => {
           this.article = result;
         });
       }
