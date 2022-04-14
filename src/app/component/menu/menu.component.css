@@ -1,0 +1,38 @@
+.banniere_grf {
+  display: flex;
+  justify-content: space-between;
+  background-color: gray;
+  background-image: url("/assets/Images/banniere/gryffondor.png");
+  background-size: cover;
+  background-repeat: repeat;
+  width: 100%;
+}
+.banniere_ps {
+  display: flex;
+  justify-content: space-between;
+  background-color: gray;
+  background-image: url("/assets/Images/banniere/PoufSouffle.jpg");
+  background-size: cover;
+  background-repeat: repeat;
+  width: 100%;
+}
+
+.banniere_ser {
+  display: flex;
+  justify-content: space-between;
+  background-color: gray;
+  background-image: url("/assets/Images/banniere/Serdaigle.jpg");
+  background-size: cover;
+  background-repeat: repeat;
+  width: 100%;
+}
+
+.banniere_spt {
+  display: flex;
+  justify-content: space-between;
+  background-color: gray;
+  background-image: url("/assets/Images/banniere/Serpentard.jpg");
+  background-size: cover;
+  background-repeat: repeat;
+  width: 100%;
+}
