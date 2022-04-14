@@ -7,7 +7,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ProduitService {
-  private static URL: string = 'http://localhost:8080/poudlard/api/catalogue/boutique';
+  private static URL: string =
+    'http://localhost:8080/poudlard/api/catalogue/boutique';
   private static URL1: string = 'http://localhost:8080/poudlard/api/catalogue';
 
   constructor(private http: HttpClient) {}
@@ -17,7 +18,7 @@ export class ProduitService {
   }
 
   public delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${ProduitService.URL}/${id}`);
+    return this.http.delete<void>(`${ProduitService.URL1}/${id}`);
   }
 
   public get(id: number): Observable<any> {
