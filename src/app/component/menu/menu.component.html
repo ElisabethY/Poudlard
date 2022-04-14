@@ -1,30 +1,52 @@
+<div
+  [ngClass]="{
+    banniere_spt: maison == 'Serpentard',
+    banniere_grf: maison == 'Griffondor',
+    banniere_ps: maison == 'PoufSouffle',
+    banniere_ser: maison == 'Serdaigle'
+  }"
+>
+  <span *ngIf="isAuthenticated()">
+    <a routerLink="/evenement" routerLinkActive="active" class="btn btn-link">
+      evenements
+    </a>
+    <a routerLink="/maison" routerLinkActive="active" class="btn btn-link">
+      maisons
+    </a>
+    <a routerLink="/boutique" routerLinkActive="active" class="btn btn-link">
+      boutique
+    </a>
 
-<span *ngIf="isAuthenticated()">
+    <span *ngIf="role == 'admin'">
+      <a routerLink="/compte" routerLinkActive="active" class="btn btn-link">
+        comptes
+      </a>
+    </span>
 
-  <a routerLink="/evenement" routerLinkActive="active" class="btn btn-link"> evenements </a>
-  <a routerLink="/maison" routerLinkActive="active" class="btn btn-link"> maisons </a>
-  <a routerLink="/boutique" routerLinkActive="active" class="btn btn-link"> boutique </a>
+    <span *ngIf="role == 'eleve'">
+      <a routerLink="/bulletin" routerLinkActive="active" class="btn btn-link">
+        bulletin
+      </a>
+    </span>
+    <span *ngIf="role == 'prof'">
+      <a routerLink="/cours" routerLinkActive="active" class="btn btn-link">
+        cours
+      </a>
+    </span>
+    <span *ngIf="role == 'prof' || role == 'eleve'">
+      <a routerLink="/profil" routerLinkActive="active" class="btn btn-link">
+        profil
+      </a>
 
-<span *ngIf="role=='admin' ">
-<a routerLink="/compte" routerLinkActive="active" class="btn btn-link"> comptes </a>
-</span>
-
-
-<span *ngIf="role=='eleve'">
-  <a routerLink="/bulletin" routerLinkActive="active" class="btn btn-link"> bulletin </a>
-</span>
-<span *ngIf="role=='prof'">
-  <a routerLink="/cours" routerLinkActive="active" class="btn btn-link"> cours </a>
-</span>
-<span *ngIf="role=='prof' || role=='eleve'">
-  <a routerLink="/profil" routerLinkActive="active" class="btn btn-link"> profil </a>
-
-  <boutton [routerLink]="['/panier']" routerLinkActive="active" class="btn btn-outline-primary">Panier</boutton>
-  <p> {{ prenom }} {{ nom }} </p>
-<p> SOLDE: {{solde}} £ </p>
+      <boutton
+        [routerLink]="['/panier']"
+        routerLinkActive="active"
+        class="btn btn-outline-primary"
+        >Panier</boutton
+      >
+      <p>{{ prenom }} {{ nom }}</p>
+      <p>SOLDE: {{ solde }} £</p>
+    </span>
   </span>
-
-
-</span>
-
+</div>
 <router-outlet></router-outlet>
