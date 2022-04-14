@@ -1,8 +1,6 @@
 import { Cours } from './../../../../entity/cours';
 import { BulletinService } from './../../../../service/bulletin.service';
-import { EleveService } from 'src/app/service/eleve.service';
 import { Eleve } from './../../../../entity/eleve';
-import { BulletinEditService } from './../../../../service/bulletin-edit.service';
 import { Bulletin } from './../../../../entity/bulletin';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -19,16 +17,15 @@ export class BulletinEditComponent implements OnInit {
 
   constructor(
     private aR: ActivatedRoute,
-    private bService: BulletinEditService,
     private bulletinervice: BulletinService,
-    private eleveService: EleveService,
+
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.aR.params.subscribe((params) => {
       if (params['id']) {
-        this.bulletinervice.get(params['id']).subscribe((result) => {
+        this.bulletinervice.getModule(params['id']).subscribe((result) => {
           this.bulletin = result;
           this.cours.intitule = this.bulletin.cours?.intitule;
           this.compte.id = this.bulletin.eleve?.id;
@@ -48,9 +45,9 @@ export class BulletinEditComponent implements OnInit {
   }
   save() {
     if (this.bulletin.id) {
-      console.log(this.compte)
+      console.log(this.compte);
       this.bulletin.eleve = this.compte;
-      this.bService.update(this.bulletin).subscribe(() => {
+      this.bulletinervice.update(this.bulletin).subscribe(() => {
         this.goList();
       });
     }

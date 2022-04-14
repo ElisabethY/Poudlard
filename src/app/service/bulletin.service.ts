@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class BulletinService {
+  private static URL1: string = 'http://localhost:8080/poudlard/api/bulletin';
   private static URL: string =
     'http://localhost:8080/poudlard/api/bulletin/eleve';
   private static UPDATE: string =
@@ -15,27 +16,33 @@ export class BulletinService {
   constructor(private http: HttpClient) {}
 
   public getAll(): Observable<any[]> {
-    return this.http.get<any[]>(BulletinService.URL);
+    return this.http.get<any[]>(BulletinService.URL1);
   }
 
   public delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${BulletinService.URL}/${id}`);
+    return this.http.delete<void>(`${BulletinService.URL1}/${id}`);
   }
 
-  public get(id: number): Observable<any> {
+  public getAllByEleve(id: number): Observable<any> {
+    return this.http.get<any>(`${BulletinService.URL1}/${id}`);
+  }
+
+  public getModule(id: number): Observable<any> {
+    return this.http.get<any>(`${BulletinService.URL}/${id}`);
+  }
+
+  public getModuleByEleve(id: number): Observable<any> {
     return this.http.get<any>(`${BulletinService.URL}/${id}`);
   }
 
   public create(bulletin: Bulletin): Observable<any> {
-    return this.http.post(BulletinService.URL, this.BulletinToJson(bulletin));
+    return this.http.post(BulletinService.URL1, this.BulletinToJson(bulletin));
   }
 
   public update(bulletin: Bulletin): Observable<any> {
-
     return this.http.put(
       `${BulletinService.UPDATE}/${bulletin.id}`,
       this.BulletinToJson(bulletin)
-
     );
   }
 

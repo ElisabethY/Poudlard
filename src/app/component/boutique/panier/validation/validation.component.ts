@@ -1,8 +1,6 @@
 import { MaisonService } from './../../../../service/maison.service';
 import { Maison } from './../../../../entity/maison';
 import { Router } from '@angular/router';
-import { PanierService } from './../../../../service/panier.service';
-import { EleveService } from 'src/app/service/eleve.service';
 import { ProfService } from './../../../../service/prof.service';
 import { Prof } from './../../../../entity/prof';
 import { Eleve } from './../../../../entity/eleve';
@@ -28,11 +26,8 @@ export class ValidationComponent implements OnInit {
 
   constructor(
     private profService: ProfService,
-    private eleveService: EleveService,
-    private panierService: PanierService,
-    private router: Router
-  ) //  private maisonService :MaisonService
-  {}
+    private router: Router //  private maisonService :MaisonService
+  ) {}
 
   ngOnInit(): void {
     console.log(localStorage.getItem('maison'));
@@ -57,7 +52,7 @@ export class ValidationComponent implements OnInit {
         // this.maison.id = Number(localStorage.getItem('maisonId'))
         // this.maison.score = Number(localStorage.getItem('score'))
         // this.compteP.maison = this.maison
-        (localStorage.setItem('solde', JSON.stringify(this.monSolde)))
+        localStorage.setItem('solde', JSON.stringify(this.monSolde));
         this.profService.update(this.compteP).subscribe(() => {
           this.goList();
         });

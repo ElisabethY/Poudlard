@@ -30,7 +30,7 @@ export class ProduitEditComponent implements OnInit {
     });
     this.aR.params.subscribe((params) => {
       if (params['id']) {
-        this.produitService.get(params['id']).subscribe((result) => {
+        this.produitService.getDetail(params['id']).subscribe((result) => {
           this.produit = result;
           console.log(result);
         });
