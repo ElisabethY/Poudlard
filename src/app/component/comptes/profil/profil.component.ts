@@ -66,11 +66,11 @@ export class ProfilComponent implements OnInit {
     if (this.soldeNew != 0) {
       this.monSolde += this.soldeNew;
       localStorage.setItem('solde', JSON.stringify(this.monSolde));
+
       if (localStorage.getItem('role') == 'prof') {
         this.profService
           .get(Number(localStorage.getItem('id')))
           .subscribe((compteP) => {
-            console.log(compteP);
             compteP.solde = this.monSolde;
             this.profService.update(compteP).subscribe(() => {
               this.goList();
@@ -79,8 +79,9 @@ export class ProfilComponent implements OnInit {
       }
       if (localStorage.getItem('role') == 'eleve') {
         this.eleveService
-          .get(Number(localStorage.getItem('id')))
+          .getEleveForUpdate(Number(localStorage.getItem('id')))
           .subscribe((compteE) => {
+            console.log(compteE);
             compteE.solde = this.monSolde;
             this.eleveService.update(compteE).subscribe(() => {
               this.goList();

@@ -50,8 +50,8 @@ export class ValidationComponent implements OnInit {
           });
       }
       if (localStorage.getItem('role') == 'eleve') {
-        this.profService
-          .get(Number(localStorage.getItem('id')))
+        this.eleveService
+          .getEleveForUpdate(Number(localStorage.getItem('id')))
           .subscribe((compteE) => {
             compteE.solde = this.monSolde;
             this.eleveService.update(compteE).subscribe(() => {

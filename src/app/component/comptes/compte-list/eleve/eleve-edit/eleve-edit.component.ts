@@ -42,7 +42,8 @@ export class EleveEditComponent implements OnInit {
         this.goList();
       });
     } else {
-      this.eleveService.create(this.eleve).subscribe(() => {
+      this.eleveService.create(this.eleve).subscribe((eleve) => {
+console.log(eleve)
         this.goList();
       });
     }

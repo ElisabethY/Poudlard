@@ -35,7 +35,7 @@ export class EleveService {
   }
 
   public create(eleve: Eleve): Observable<any> {
-    //eleve.password = CryptoJS.MD5(eleve.password).toString();
+    console.log(eleve)
     return this.http.post(EleveService.CREATE, this.EleveToJson(eleve));
   }
 
