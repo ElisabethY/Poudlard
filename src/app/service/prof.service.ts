@@ -25,11 +25,12 @@ export class ProfService {
   }
 
   public create(prof: Prof): Observable<any> {
-    console.log(prof)
     return this.http.post(ProfService.CREATE, this.profToJson(prof));
   }
 
   public update(prof: Prof): Observable<any> {
+    console.log('______');
+    console.log(prof);
     return this.http.put(
       `${ProfService.URL}/${localStorage.getItem('id')}`,
 
@@ -44,7 +45,11 @@ export class ProfService {
       nom: prof.nom,
       prenom: prof.prenom,
       naissance: prof.naissance,
-      maison: { id: prof.maison?.id },
+      maison: {
+        id: prof.maison?.id,
+        nom: prof.maison?.nom,
+        score: prof.maison?.score,
+      },
       password: prof.password,
       solde: prof.solde,
       type: 'prof',

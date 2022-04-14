@@ -25,13 +25,11 @@ export class BoutiqueListComponent implements OnInit {
       for (let e of result) {
         this.boutiques.push(new Boutique(e.id, e.nom, e.adresse, e.categorie));
       }
-      console.log(result);
     });
   }
 
   delete(id: number) {
     this.boutiqueService.delete(id).subscribe((ok) => {
-      console.log('deleted');
       this.list();
     });
   }

@@ -66,16 +66,14 @@ export class ProfilComponent implements OnInit {
       this.monSolde += this.soldeNew;
       localStorage.setItem('solde', JSON.stringify(this.monSolde));
       if (localStorage.getItem('role') == 'prof') {
+        console.log(localStorage.getItem('role'));
         this.profService
           .get(Number(localStorage.getItem('id')))
           .subscribe((compteP) => {
-            console.log(compteP);
-            this.compteP = compteP;
+            this.profService.update(compteP).subscribe(() => {
+              this.goList();
+            });
           });
-
-        this.profService.update(this.compteP).subscribe(() => {
-          this.goList();
-        });
       }
       if (localStorage.getItem('role') == 'eleve') {
         this.profService
@@ -101,7 +99,6 @@ export class ProfilComponent implements OnInit {
     this.isOK = false;
     this.isTransaction = true;
     this.msg = 'Recharge Validée. Nouveau Solde : ' + this.monSolde;
-    console.log(this.compte);
   }
   isAuthenticated() {
     return this.authService.isAuthenticated();

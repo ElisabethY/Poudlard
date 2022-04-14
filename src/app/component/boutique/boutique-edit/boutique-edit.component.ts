@@ -29,7 +29,6 @@ export class BoutiqueEditComponent implements OnInit {
       if (params['id']) {
         this.boutiqueService.get(params['id']).subscribe((result) => {
           this.boutique = result;
-          console.log(this.boutique);
         });
       }
     });

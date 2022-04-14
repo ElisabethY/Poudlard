@@ -28,8 +28,6 @@ export class PanierComponent implements OnInit {
 
   ngOnInit(): void {
     this.total();
-
- //   console.log(this.prixTotal)
   }
 total(){
     for (let p of this.monPanier)
