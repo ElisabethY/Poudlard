@@ -4,10 +4,11 @@ import { Produit } from './../entity/produit';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProduitService {
-  private static URL: string = 'http://localhost:8080/poudlard/api/catalogue/boutique';
+  private static URL: string =
+    'http://localhost:8080/poudlard/api/catalogue/boutique';
   private static URL1: string = 'http://localhost:8080/poudlard/api/catalogue';
 
   constructor(private http: HttpClient) {}
@@ -21,15 +22,18 @@ export class ProduitService {
   }
 
   public get(id: number): Observable<any> {
-    return this.http.get<any>(`${ProduitService.URL}/${id}`);
+    return this.http.get<any>(`${ProduitService.URL1}/${id}`);
   }
 
   public create(produit: Produit): Observable<any> {
-    return this.http.post(ProduitService.URL, this.produitToJson(produit));
+    return this.http.post(ProduitService.URL1, this.produitToJson(produit));
   }
 
   public update(produit: Produit): Observable<any> {
-    return this.http.put(`${ProduitService.URL1}/${produit.id}`, this.produitToJson(produit));
+    return this.http.put(
+      `${ProduitService.URL1}/${produit.id}`,
+      this.produitToJson(produit)
+    );
   }
 
   private produitToJson(produit: Produit): any {
@@ -38,7 +42,12 @@ export class ProduitService {
       libelle: produit.libelle,
       description: produit.description,
       prix: produit.prix,
-      boutique: {id:produit.boutique!.id, categorie:"categorie", nom:"nom",adresse:"adresse"},
+      boutique: {
+        id: produit.boutique!.id,
+        categorie: produit.boutique!.categorie,
+        nom: produit.boutique!.nom,
+        adresse: produit.boutique!.adresse,
+      },
       img: produit.img,
     };
     return obj;

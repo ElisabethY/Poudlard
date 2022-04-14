@@ -1,5 +1,3 @@
-import { Eleve } from './../../entity/eleve';
-import { Maison } from './../../entity/maison';
 import { AuthService } from './../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,6 +12,7 @@ export class LoginComponent implements OnInit {
   password: string = '';
   erreur: boolean = false;
   message: string = '';
+  afficher: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -54,7 +53,6 @@ export class LoginComponent implements OnInit {
 
         this.erreur = false;
         this.router.navigateByUrl('/evenement');
-
       },
       error: (error: any) => {
         console.log(error);
@@ -64,4 +62,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  showHidePassword() {
+    this.afficher = !this.afficher;
+  }
 }

@@ -12,7 +12,6 @@ import { Component, OnInit } from '@angular/core';
 export class BoutiqueEditComponent implements OnInit {
   boutique: Boutique = new Boutique();
   categorie = Categorie;
-  enumKey: [] = [];
   boutiqueArr: Boutique[] = [];
 
   constructor(
@@ -20,19 +19,17 @@ export class BoutiqueEditComponent implements OnInit {
     private boutiqueService: BoutiqueService,
     private router: Router
   ) {}
-  //test
   ngOnInit(): void {
 
-    this.boutiqueService.getAll().subscribe((result) => {
-      console.log(result)
-      this.boutiqueArr = result;
+    this.boutiqueService.getAll().subscribe((results) => {
+      this.boutiqueArr = results;
     });
 
     this.aR.params.subscribe((params) => {
       if (params['id']) {
         this.boutiqueService.get(params['id']).subscribe((result) => {
           this.boutique = result;
-          console.log(this.categorie);
+          console.log(this.boutique);
         });
       }
     });
@@ -54,8 +51,8 @@ export class BoutiqueEditComponent implements OnInit {
     this.router.navigateByUrl('/boutique');
   }
 
-  byIdBoutique(b1: Boutique, b2: Boutique) {
-    if (b1 && b2) return b1.id == b2.id;
+  byName(b1: Categorie, b2: Categorie) {
+    if (b1 && b2) return b1 == b2;
     return false;
   }
 }

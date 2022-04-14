@@ -18,13 +18,13 @@
     <label>Adresse:</label>
     <input type="text" [(ngModel)]="boutique.adresse" class="form-control" />
   </div>
-  <div>
-  <label>Categorie:</label>
-<select [(ngModel)]="categorie" class="form-control" [compareWith]="byIdBoutique" >
-  <option *ngFor="let m of boutiqueArr" [ngValue]="m">
-    {{m.categorie}}
-  </option>
-</select>
+<div class="form-group">
+  <label>categorie:</label>
+  <select [(ngModel)]="categorie" class="form-control">
+    <option *ngFor="let c of categorie | keyvalue" [value]="c.key">
+      {{ c.value }}
+    </option>
+  </select>
 </div>
   <div>
     <button (click)="save()" class="btn btn-outline-success">

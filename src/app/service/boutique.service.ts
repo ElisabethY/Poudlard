@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BoutiqueService {
   private static URL: string = 'http://localhost:8080/poudlard/api/boutiques';
@@ -24,11 +24,15 @@ export class BoutiqueService {
   }
 
   public create(boutique: Boutique): Observable<any> {
+    console.log(boutique);
     return this.http.post(BoutiqueService.URL, this.boutiqueToJson(boutique));
   }
 
   public update(boutique: Boutique): Observable<any> {
-    return this.http.put(`${BoutiqueService.URL}/${boutique.id}`, this.boutiqueToJson(boutique));
+    return this.http.put(
+      `${BoutiqueService.URL}/${boutique.id}`,
+      this.boutiqueToJson(boutique)
+    );
   }
 
   private boutiqueToJson(boutique: Boutique): any {
