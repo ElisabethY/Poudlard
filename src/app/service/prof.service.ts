@@ -29,6 +29,7 @@ export class ProfService {
   }
 
   public update(prof: Prof): Observable<any> {
+    console.log(prof);
     return this.http.put(
       `${ProfService.URL}/${localStorage.getItem('id')}`,
 

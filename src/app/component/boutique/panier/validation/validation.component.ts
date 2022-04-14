@@ -38,21 +38,26 @@ export class ValidationComponent implements OnInit {
     if (this.monSolde - Number(this.prixTotal) >= 0) {
       this.monSolde -= Number(this.prixTotal);
       localStorage.setItem('solde', JSON.stringify(this.monSolde));
+
       if (localStorage.getItem('role') == 'prof') {
-        this.compteP.solde = this.monSolde;
-        this.profService.update(this.compteP).subscribe(() => {
-          this.goList();
-        });
-        // this.monPanier.Compte= this.compteP
-        // this.panierService.create(this.monPanier).subscribe(()=>
-        // {
-        // })
+        this.profService
+          .get(Number(localStorage.getItem('id')))
+          .subscribe((compteP) => {
+            compteP.solde = this.monSolde;
+            this.profService.update(compteP).subscribe(() => {
+              this.goList();
+            });
+          });
       }
       if (localStorage.getItem('role') == 'eleve') {
-        this.compteE.solde = this.monSolde;
-        this.eleveService.update(this.compteE).subscribe(() => {
-          this.goList();
-        });
+        this.profService
+          .get(Number(localStorage.getItem('id')))
+          .subscribe((compteE) => {
+            compteE.solde = this.monSolde;
+            this.eleveService.update(compteE).subscribe(() => {
+              this.goList();
+            });
+          });
       }
       this.isAchat = true;
       this.message = 'Achat Validé';

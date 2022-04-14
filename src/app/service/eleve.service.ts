@@ -46,6 +46,7 @@ export class EleveService {
     );
   }
   public update(eleve: Eleve): Observable<any> {
+    console.log(eleve);
     return this.http.put(
       `${EleveService.PUT}/${localStorage.getItem('id')}`,
       this.EleveToJson(eleve)
