@@ -1,21 +1,45 @@
- <div>
-  <div>
-<div *ngIf="erreur" class="alert alert-danger">
- {{message}}
-</div>
-  <label>Login</label>
-<input type="text" class="form-control" [(ngModel)]="login"/>
-</div>
-<div>
-  <label>Password</label>
-<input [type]=" afficher ? 'text': 'password' " class="form-control" [(ngModel)]="password" (keyup.enter)="check()"/>
-</div>
-<div> <button class="btn btn-primary" (click)='showHidePassword()'> {{ afficher ? 'Masquer' : 'Afficher' }} Password</button></div>
+<head>
+  <link rel="stylesheet" href="login.component.css" />
+  <link href="http://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet" />
+</head>
+<body>
+  <video autoplay muted loop id id="video">
+    <source loop src="assets/Images/pagelogin/vid.mp4" type="video/mp4" />
+  </video>
+  <div class="container">
+    <br />
+    <br />
+    <h2>Bienvenue a Poudlard</h2>
+    <img src="assets/Images/pagelogin/HogwartsLogo2.png" />
+    <div style="text-align: center">
+      <div>
+        <div *ngIf="erreur" class="alert alert-danger">
+          {{ message }}
+        </div>
+        <label>Login</label>
+        <input type="text" class="form-control" [(ngModel)]="login" />
+      </div>
+      <div>
+        <label>Password</label>
+        <input
+          [type]="afficher ? 'text' : 'password'"
+          class="form-control"
+          [(ngModel)]="password"
+          (keyup.enter)="check()"
+        />
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-primary" (click)="showHidePassword()">
+        {{ afficher ? "Masquer" : "Afficher" }} Password
+      </button>
+    </div>
 
-<div>
-  <button (click)="check()" class="btn btn-outline-success" >
-    connexion
-  </button>
-  <a routerLink="/menu"></a>
-</div>
-</div>
+    <div>
+      <button (click)="check()" class="btn btn-outline-success">
+        connexion
+      </button>
+      <a routerLink="/menu"></a>
+    </div>
+  </div>
+</body>
