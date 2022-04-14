@@ -14,7 +14,7 @@ import { PanierComponent } from './component/boutique/panier/panier.component';
 import { ProfComponent } from './component/comptes/compte-list/prof/prof.component';
 import { EleveComponent } from './component/comptes/compte-list/eleve/eleve.component';
 import { EventEditComponent } from './component/evenement/event-edit/event-edit.component';
- // import { GuardService } from './service/guard.service';
+// import { GuardService } from './service/guard.service';
 import { ProduitEditComponent } from './component/boutique/produit-edit/produit-edit.component';
 import { ProduitListComponent } from './component/boutique/produit-list/produit-list.component';
 import { BoutiqueEditComponent } from './component/boutique/boutique-edit/boutique-edit.component';
@@ -24,51 +24,48 @@ import { MaisonComponent } from './component/maison/maison.component';
 import { CoursEditComponent } from './component/cours/cours-edit/cours-edit.component';
 import { EvenementComponent } from './component/evenement/evenement.component';
 
-import { Routes } from "@angular/router";
- // import { FromTemplateComponent } from './component/formulaire/from-template/from-template.component';
+import { Routes } from '@angular/router';
+// import { FromTemplateComponent } from './component/formulaire/from-template/from-template.component';
 
-export
-const routes : Routes= [
+export const routes: Routes = [
+  { path: 'connexion', component: LoginComponent },
+  { path: 'profil', component: ProfilComponent },
 
-{path: 'connexion',component: LoginComponent},
-{path: 'profil',component: ProfilComponent},
+  { path: 'menu', component: MenuComponent },
+  { path: 'evenement', component: EvenementComponent },
+  { path: 'evenement/edit/:id', component: EventEditComponent },
+  { path: 'evenement/add', component: EventEditComponent },
 
+  { path: 'cours', component: CoursListeComponent },
+  { path: 'cours/edit/:id', component: CoursEditComponent },
+  { path: 'eleve/cours/:id', component: ListeElevesComponent },
 
-{path: 'menu',component: MenuComponent},
-{path: 'evenement',component: EvenementComponent},
-{path: 'evenement/edit/:id',component: EventEditComponent},
-{path: 'evenement/add',component: EventEditComponent},
+  { path: 'eleves/bulletin/:id', component: BulletinComponent },
+  { path: 'bulletin/edit/:id', component: BulletinEditComponent },
+  { path: 'bulletin', component: BulletinComponent },
 
-{path: 'cours',component: CoursListeComponent},
-{path: 'cours/edit/:id',component: CoursEditComponent},
-{path: 'eleve/cours/:id',component: ListeElevesComponent},
+  { path: 'maison', component: MaisonComponent },
+  { path: 'maison/edit/:id', component: MaisonEditComponent },
+  { path: 'maison/add', component: MaisonEditComponent },
 
-{path: 'eleves/bulletin/:id',component: BulletinComponent},
-{path: 'bulletin/edit/:id',component: BulletinEditComponent},
-{path: 'bulletin',component: BulletinComponent},
+  { path: 'compte', component: CompteListComponent },
+  { path: 'compte/professeurs', component: ProfComponent },
+  { path: 'compte/professeurs/edit/:id', component: ProfEditComponent },
+  { path: 'compte/professeurs/add', component: ProfEditComponent },
+  { path: 'compte/eleves', component: EleveComponent },
+  { path: 'compte/eleves/edit/:id', component: EleveEditComponent },
+  { path: 'compte/eleves/add', component: EleveEditComponent },
 
-{path: 'maison',component: MaisonComponent },
-{path: 'maison/edit/:id',component: MaisonEditComponent },
-{path: 'maison/add',component: MaisonEditComponent },
+  { path: 'panier', component: PanierComponent },
+  { path: 'panier/validation', component: ValidationComponent },
 
-{path: 'compte',component: CompteListComponent},
-{path: 'compte/professeurs',component: ProfComponent},
-{path: 'compte/professeurs/edit/:id',component: ProfEditComponent},
-{path: 'compte/professeurs/add',component: ProfEditComponent},
-{path: 'compte/eleves',component: EleveComponent},
-{path: 'compte/eleves/edit/:id',component: EleveEditComponent},
-
-{path: 'panier',component: PanierComponent},
-{path: 'panier/validation',component: ValidationComponent},
-
-{path: 'boutique',component: BoutiqueListComponent},
-{path: 'boutique/produits/:id',component: ProduitListComponent},
-{path: 'panier/compte/:id',component: PanierComponent},
-{path: 'boutique/edit',component: BoutiqueEditComponent},
-{path: 'boutique/edit/:id',component: BoutiqueEditComponent},
-{path: 'boutique/produit/detail/:id',component: ProduitDetailComponent},
-{path: 'boutique/produit/edit/:id',component: ProduitEditComponent},
-{path: 'boutique/produit/add',component: ProduitEditComponent},
-//{path: 'formulaire/template',component: FromTemplateComponent},
-]
-
+  { path: 'boutique', component: BoutiqueListComponent },
+  { path: 'boutique/produits/:id', component: ProduitListComponent },
+  { path: 'panier/compte/:id', component: PanierComponent },
+  { path: 'boutique/edit', component: BoutiqueEditComponent },
+  { path: 'boutique/edit/:id', component: BoutiqueEditComponent },
+  { path: 'boutique/produit/detail/:id', component: ProduitDetailComponent },
+  { path: 'boutique/produit/edit/:id', component: ProduitEditComponent },
+  { path: 'boutique/produit/add', component: ProduitEditComponent },
+  //{path: 'formulaire/template',component: FromTemplateComponent},
+];

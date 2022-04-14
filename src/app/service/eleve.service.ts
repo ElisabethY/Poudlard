@@ -2,6 +2,7 @@ import { Eleve } from './../entity/eleve';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+//import * as CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,8 @@ export class EleveService {
   private static URL: string = 'http://localhost:8080/poudlard/api/eleve';
   private static PUT: string = 'http://localhost:8080/poudlard/api/eleve/put';
   private static GET: string = 'http://localhost:8080/poudlard/api/cours/get';
+  private static CREATE: string =
+    'http://localhost:8080/poudlard/api/eleve/creer';
   constructor(private http: HttpClient) {}
 
   public getAll(): Observable<any[]> {
@@ -32,7 +35,8 @@ export class EleveService {
   }
 
   public create(eleve: Eleve): Observable<any> {
-    return this.http.post(EleveService.URL, this.EleveToJson(eleve));
+    //eleve.password = CryptoJS.MD5(eleve.password).toString();
+    return this.http.post(EleveService.CREATE, this.EleveToJson(eleve));
   }
 
   public updateEleveIfAdmin(eleve: Eleve): Observable<any> {
