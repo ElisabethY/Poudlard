@@ -4,35 +4,31 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent implements OnInit {
+  constructor(private authService: AuthService) {}
 
-  constructor(private authService: AuthService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   isAuthenticated() {
     return this.authService.isAuthenticated();
   }
 
   get role() {
-     return localStorage.getItem('role');
+    return localStorage.getItem('role');
   }
   get solde() {
-
     return localStorage.getItem('solde');
- }
- get nom() {
-  return localStorage.getItem('nom');
+  }
+  get nom() {
+    return localStorage.getItem('nom');
+  }
+  get prenom() {
+    return localStorage.getItem('prenom');
+  }
+
+  get maison() {
+    return localStorage.getItem('maison');
+  }
 }
-get prenom() {
-  return localStorage.getItem('prenom');
-}
-
-}
-
-
-
-
