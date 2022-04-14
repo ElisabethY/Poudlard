@@ -1,4 +1,8 @@
-<app-menu></app-menu>
+
+<span *ngIf="isAuthenticated()">
+<app-menu></app-menu></span>
+
+
 <router-outlet></router-outlet>
 
 
