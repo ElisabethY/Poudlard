@@ -33,7 +33,7 @@ export class Boutique {
     return this._categorie;
   }
 
-  public set heure(value: Categorie | undefined) {
+  public set categorie(value: Categorie | undefined) {
     this._categorie = value;
   }
 }
