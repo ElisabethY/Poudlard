@@ -28,6 +28,7 @@ export class ProfilComponent implements OnInit {
   isTransaction: boolean = false;
   msg: string = '';
   maisonUpdate: Maison = new Maison();
+  maMaison = localStorage.getItem('maison');
 
   constructor(
     private authService: AuthService,
@@ -35,11 +36,11 @@ export class ProfilComponent implements OnInit {
     private profService: ProfService,
     private eleveService: EleveService,
     private router: Router,
-    private maisonService: MaisonService
   ) {}
 
   ngOnInit(): void {
     this.aR.queryParams.subscribe((params) => {
+      console.log(this.maMaison)
       if (params['auth']) {
         this.erreur = true;
         this.message = 'Identifiants non reconnus';
@@ -66,7 +67,6 @@ export class ProfilComponent implements OnInit {
       this.monSolde += this.soldeNew;
       localStorage.setItem('solde', JSON.stringify(this.monSolde));
       if (localStorage.getItem('role') == 'prof') {
-        console.log(localStorage.getItem('role'));
         this.profService
           .get(Number(localStorage.getItem('id')))
           .subscribe((compteP) => {

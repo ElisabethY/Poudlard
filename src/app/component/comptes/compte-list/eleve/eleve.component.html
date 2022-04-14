@@ -21,6 +21,8 @@
     <td>{{ e.naissance  | date: "dd/MM/yyyy"}}</td>
     <td>{{(getMaison(e)!.nom)}}</td>
 
+
+
     <td>
       <a
         [routerLink]="['/compte', 'eleves','edit', e.id]"
@@ -35,6 +37,6 @@
     </td>
   </tr>
 </table>
-<a routerLink="/compte/add" routerLinkActive="active" class="btn btn-link"
+<a routerLink="/compte/eleves/add" routerLinkActive="active" class="btn btn-link"
   >Creer</a
 >

@@ -1,6 +1,7 @@
 import { AuthService } from './../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+//import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
   check() {
     this.authService.authentication(this.login, this.password).subscribe({
       next: (value: string) => {
+        //this.password = CryptoJS.MD5(this.password).toString();
         localStorage.setItem('login', this.login);
         localStorage.setItem(
           'token',
