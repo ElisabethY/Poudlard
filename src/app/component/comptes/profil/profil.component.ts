@@ -86,13 +86,13 @@ export class ProfilComponent implements OnInit {
         this.eleveService.update(this.compte).subscribe(() => {
           this.goList();
         });
-      }} else {
-        this.isEdition = false;
-        this.isOK = false;
-        this.isTransaction = true;
-        this.msg = 'Solde Inchangé';
       }
-
+    } else {
+      this.isEdition = false;
+      this.isOK = false;
+      this.isTransaction = true;
+      this.msg = 'Solde Inchangé';
+    }
   }
 
   goList() {
