@@ -35,12 +35,12 @@ export class ProfilComponent implements OnInit {
     private aR: ActivatedRoute,
     private profService: ProfService,
     private eleveService: EleveService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.aR.queryParams.subscribe((params) => {
-      console.log(this.maMaison)
+      console.log(this.maMaison);
       if (params['auth']) {
         this.erreur = true;
         this.message = 'Identifiants non reconnus';
@@ -70,6 +70,8 @@ export class ProfilComponent implements OnInit {
         this.profService
           .get(Number(localStorage.getItem('id')))
           .subscribe((compteP) => {
+            console.log(compteP);
+            compteP.solde = this.monSolde;
             this.profService.update(compteP).subscribe(() => {
               this.goList();
             });
@@ -79,6 +81,7 @@ export class ProfilComponent implements OnInit {
         this.eleveService
           .get(Number(localStorage.getItem('id')))
           .subscribe((compteE) => {
+            compteE.solde = this.monSolde;
             this.eleveService.update(compteE).subscribe(() => {
               this.goList();
             });
