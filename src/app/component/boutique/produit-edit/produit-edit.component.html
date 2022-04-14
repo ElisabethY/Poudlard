@@ -9,27 +9,35 @@
     />
   </div>
   <div class="form-group">
-    <label>nom de l'evenement:</label>
+    <label>Nom du produit:</label>
     <input type="text" [(ngModel)]="produit.libelle" class="form-control" />
   </div>
   </div>
   <div class="form-group">
-    <label>date:</label>
+    <label>Prix:</label>
     <input type="number" [(ngModel)]="produit.prix" class="form-control" />
   </div>
   <div class="form-group">
-    <label>heure:</label>
+    <label>Boutique:</label>
+    <select [(ngModel)]="produit.boutique" class="form-control" [compareWith]="byIdBoutique" >
+      <option *ngFor="let m of boutiqueArr" [ngValue]="m">
+        {{ m.id }} {{ m.nom }} {{ m.adresse }} {{ m.categorie }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Description:</label>
     <input type="text" [(ngModel)]="produit.description" class="form-control" />
 
     <div class="form-group">
-      <label>heure:</label>
-      <input type="text" [(ngModel)]="produit.description" class="form-control" />
+      <label>Image:</label>
+      <input type="text" [(ngModel)]="produit.img" class="form-control" />
 
   <div>
     <button (click)="save()" class="btn btn-outline-success">
       enregistrer
     </button>
-    <a routerLink="/evenement" class="btn btn-outline-warning">annuler</a>
+    <a routerLink="/boutique" class="btn btn-outline-warning">annuler</a>
   </div>
 
 </div>
